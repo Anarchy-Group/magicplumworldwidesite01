@@ -35,35 +35,15 @@
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--white);color:var(--ink);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
-
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--off)}
 ::-webkit-scrollbar-thumb{background:var(--plum2);border-radius:99px}
-
-/* ── CURSOR DOT ── */
 #cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.08s,width 0.2s,height 0.2s,opacity 0.2s;mix-blend-mode:multiply}
 #cursor.big{width:36px;height:36px;opacity:0.35}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 3rem;
-  background:rgba(255,255,255,0.88);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  transition:box-shadow 0.3s;
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s}
 nav.scrolled{box-shadow:0 4px 24px rgba(92,45,143,0.09)}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-mark{
-  width:36px;height:36px;border-radius:10px;
-  background:linear-gradient(135deg,var(--plum),var(--accent));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;flex-shrink:0;
-}
+.nav-logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--plum),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .nav-logo-text{font-family:var(--font-head);font-weight:700;font-size:1rem;color:var(--ink);letter-spacing:-0.01em;line-height:1.1}
 .nav-logo-sub{font-size:9px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--plum2);margin-top:1px}
 .nav-links{display:flex;gap:2rem;align-items:center}
@@ -71,14 +51,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(92,45,143,0.09)}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.2s}
 .nav-links a:hover{color:var(--plum)}
 .nav-links a:hover::after{transform:scaleX(1)}
-.nav-cta{
-  padding:9px 20px;border-radius:99px;
-  background:var(--plum);color:#fff;
-  font-family:var(--font-body);font-size:13px;font-weight:600;
-  border:none;cursor:pointer;text-decoration:none;
-  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
-  letter-spacing:0.01em;
-}
+.nav-cta{padding:9px 20px;border-radius:99px;background:var(--plum);color:#fff;font-family:var(--font-body);font-size:13px;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;letter-spacing:0.01em}
 .nav-cta:hover{background:var(--plum2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(92,45,143,0.28)}
 .nav-mobile-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
 .nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.25s}
@@ -86,261 +59,97 @@ nav.scrolled{box-shadow:0 4px 24px rgba(92,45,143,0.09)}
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--ink);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--border);transition:color 0.18s}
 .mobile-menu a:hover{color:var(--plum)}
-
-/* ── HERO ── */
-.hero{
-  min-height:100vh;
-  padding:calc(var(--nav-h) + 5rem) 3rem 5rem;
-  display:flex;align-items:center;
-  position:relative;overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background:
-    radial-gradient(ellipse 55% 55% at 85% 20%, rgba(92,45,143,0.09) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 15% 80%, rgba(233,30,140,0.06) 0%, transparent 60%);
-}
-/* animated grid lines */
-.hero-grid{
-  position:absolute;inset:0;z-index:0;
-  background-image:
-    linear-gradient(rgba(92,45,143,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(92,45,143,0.045) 1px, transparent 1px);
-  background-size:52px 52px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-}
-.hero-inner{
-  position:relative;z-index:1;
-  max-width:1200px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--plum2);margin-bottom:1.4rem;
-}
+.hero{min-height:100vh;padding:calc(var(--nav-h) + 5rem) 3rem 5rem;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 55% 55% at 85% 20%, rgba(92,45,143,0.09) 0%, transparent 65%),radial-gradient(ellipse 40% 40% at 15% 80%, rgba(233,30,140,0.06) 0%, transparent 60%)}
+.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(92,45,143,0.045) 1px, transparent 1px),linear-gradient(90deg, rgba(92,45,143,0.045) 1px, transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--plum2);margin-bottom:1.4rem}
 .hero-eyebrow::before{content:'';width:24px;height:2px;background:var(--accent);border-radius:2px}
-.hero h1{
-  font-family:var(--font-head);font-weight:800;
-  font-size:clamp(2.6rem,4.5vw,4rem);
-  line-height:1.05;letter-spacing:-0.03em;
-  color:var(--ink);margin-bottom:1.25rem;
-}
+.hero h1{font-family:var(--font-head);font-weight:800;font-size:clamp(2.6rem,4.5vw,4rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.25rem}
 .hero h1 .hl{color:var(--plum)}
 .hero h1 .hl2{color:var(--accent);font-style:italic}
 .hero-desc{font-size:1.05rem;color:var(--ink2);line-height:1.7;max-width:480px;margin-bottom:2rem}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-primary{
-  padding:13px 28px;border-radius:99px;
-  background:var(--plum);color:#fff;
-  font-family:var(--font-body);font-size:14px;font-weight:600;
-  border:none;cursor:pointer;text-decoration:none;
-  transition:all 0.22s;display:inline-flex;align-items:center;gap:8px;
-}
+.btn-primary{padding:13px 28px;border-radius:99px;background:var(--plum);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:8px}
 .btn-primary:hover{background:var(--plum2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(92,45,143,0.28)}
-.btn-secondary{
-  padding:13px 28px;border-radius:99px;
-  background:transparent;color:var(--plum);
-  border:1.5px solid var(--border2);
-  font-family:var(--font-body);font-size:14px;font-weight:600;
-  cursor:pointer;text-decoration:none;
-  transition:all 0.22s;display:inline-flex;align-items:center;gap:8px;
-}
+.btn-secondary{padding:13px 28px;border-radius:99px;background:transparent;color:var(--plum);border:1.5px solid var(--border2);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:8px}
 .btn-secondary:hover{background:var(--plum3);border-color:var(--plum);transform:translateY(-1px)}
 .hero-visual{position:relative}
-.hero-card{
-  background:#fff;border-radius:20px;
-  border:1px solid var(--border);
-  padding:2rem;
-  box-shadow:0 20px 60px rgba(92,45,143,0.1);
-  position:relative;overflow:hidden;
-}
-.hero-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(92,45,143,0.04) 0%,rgba(233,30,140,0.03) 100%);
-}
-.hero-code{
-  font-family:'Courier New',monospace;font-size:13px;
-  line-height:1.7;color:var(--ink2);position:relative;z-index:1;
-}
+.hero-card{background:#fff;border-radius:20px;border:1px solid var(--border);padding:2rem;box-shadow:0 20px 60px rgba(92,45,143,0.1);position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(92,45,143,0.04) 0%,rgba(233,30,140,0.03) 100%)}
+.hero-code{font-family:'Courier New',monospace;font-size:13px;line-height:1.7;color:var(--ink2);position:relative;z-index:1}
 .hero-code .kw{color:var(--plum);font-weight:700}
 .hero-code .str{color:var(--accent)}
 .hero-code .fn{color:#0E7490}
 .hero-code .cm{color:var(--ink3);font-style:italic}
 .hero-code .num{color:#D97706}
-.hero-ticker{
-  margin-top:1.25rem;padding:10px 14px;
-  background:var(--plum3);border-radius:var(--rad-sm);
-  font-size:12px;color:var(--plum);font-weight:600;
-  display:flex;align-items:center;gap:8px;position:relative;z-index:1;
-}
+.hero-ticker{margin-top:1.25rem;padding:10px 14px;background:var(--plum3);border-radius:var(--rad-sm);font-size:12px;color:var(--plum);font-weight:600;display:flex;align-items:center;gap:8px;position:relative;z-index:1}
 .ticker-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-.hero-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
-  margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);
-}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
 .stat{text-align:center}
 .stat-num{font-family:var(--font-head);font-weight:800;font-size:1.8rem;color:var(--plum);line-height:1}
 .stat-label{font-size:11px;color:var(--ink3);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px}
-
-/* ── SECTIONS ── */
 .section{padding:6rem 3rem;max-width:1200px;margin:0 auto}
 .section-full{padding:5rem 3rem;background:var(--off)}
 .section-full .section{padding:0;background:none}
-.section-label{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--plum2);margin-bottom:0.85rem;
-}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--plum2);margin-bottom:0.85rem}
 .section-label::before{content:'';width:20px;height:2px;background:var(--accent);border-radius:2px}
-.section-title{
-  font-family:var(--font-head);font-weight:800;
-  font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-0.03em;
-  color:var(--ink);margin-bottom:1rem;line-height:1.1;
-}
+.section-title{font-family:var(--font-head);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-0.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
 .section-desc{font-size:1rem;color:var(--ink2);max-width:560px;line-height:1.7}
-
-/* ── ABOUT ── */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3.5rem}
 .about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem}
-.pill{
-  padding:6px 14px;border-radius:99px;font-size:12px;font-weight:600;
-  background:var(--plum3);color:var(--plum);border:1px solid var(--border2);
-}
+.pill{padding:6px 14px;border-radius:99px;font-size:12px;font-weight:600;background:var(--plum3);color:var(--plum);border:1px solid var(--border2)}
 .about-body{font-size:1rem;color:var(--ink2);line-height:1.8;margin-bottom:1.5rem}
-.about-visual{
-  background:#fff;border-radius:20px;border:1px solid var(--border);
-  padding:2rem;display:flex;flex-direction:column;gap:12px;
-  box-shadow:0 8px 32px rgba(92,45,143,0.08);
-}
-.about-chip{
-  display:flex;align-items:center;gap:12px;padding:12px 16px;
-  border-radius:10px;border:1px solid var(--border);background:var(--off);
-  font-size:13px;font-weight:500;color:var(--ink2);
-  transition:all 0.2s;cursor:default;
-}
+.about-visual{background:#fff;border-radius:20px;border:1px solid var(--border);padding:2rem;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 32px rgba(92,45,143,0.08)}
+.about-chip{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--off);font-size:13px;font-weight:500;color:var(--ink2);transition:all 0.2s;cursor:default}
 .about-chip:hover{background:var(--plum3);border-color:var(--border2);color:var(--plum)}
 .about-chip-icon{font-size:1.3rem;flex-shrink:0}
-
-/* ── VENTURES ── */
 .ventures-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.ventures-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:1.25rem;
-}
-.venture-card{
-  background:#fff;border-radius:var(--radius);
-  border:1px solid var(--border);padding:1.5rem;
-  text-decoration:none;color:inherit;
-  transition:all 0.22s;position:relative;overflow:hidden;
-  display:flex;flex-direction:column;
-}
-.venture-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,transparent 60%,rgba(92,45,143,0.04) 100%);
-  opacity:0;transition:opacity 0.22s;
-}
+.ventures-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.venture-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);padding:1.5rem;text-decoration:none;color:inherit;transition:all 0.22s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.venture-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(92,45,143,0.04) 100%);opacity:0;transition:opacity 0.22s}
 .venture-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(92,45,143,0.12);border-color:var(--border2)}
 .venture-card:hover::before{opacity:1}
 .vc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.vc-icon{
-  width:48px;height:48px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;flex-shrink:0;
-}
+.vc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
 .vc-tag{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);background:var(--off);padding:4px 10px;border-radius:99px;border:1px solid var(--border)}
 .vc-name{font-family:var(--font-head);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:0.4rem;letter-spacing:-0.01em}
 .vc-desc{font-size:13px;color:var(--ink2);line-height:1.6;flex:1;margin-bottom:1.25rem}
-.vc-link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:12.5px;font-weight:600;color:var(--plum);letter-spacing:0.01em;
-  text-decoration:none;
-  transition:gap 0.18s;
-}
+.vc-link{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--plum);letter-spacing:0.01em;text-decoration:none;transition:gap 0.18s}
 .venture-card:hover .vc-link{gap:10px}
 .vc-link svg{width:14px;height:14px;transition:transform 0.18s}
 .venture-card:hover .vc-link svg{transform:translateX(2px)}
-
-/* ── SERVICES ── */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-.service-card{
-  padding:2rem;border-radius:var(--radius);border:1px solid var(--border);
-  background:#fff;transition:all 0.22s;
-}
+.service-card{padding:2rem;border-radius:var(--radius);border:1px solid var(--border);background:#fff;transition:all 0.22s}
 .service-card:hover{border-color:var(--plum);box-shadow:0 8px 28px rgba(92,45,143,0.1);transform:translateY(-2px)}
 .service-icon{font-size:2rem;margin-bottom:1rem}
 .service-name{font-family:var(--font-head);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:0.5rem}
 .service-desc{font-size:13px;color:var(--ink2);line-height:1.7}
-
-/* ── GLOBAL STRIP ── */
-.global-strip{
-  background:linear-gradient(135deg,var(--plum) 0%,#3A1A6E 100%);
-  padding:5rem 3rem;text-align:center;color:#fff;position:relative;overflow:hidden;
-}
-.global-strip::before{
-  content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
-  background-size:40px 40px;
-}
+.global-strip{background:linear-gradient(135deg,var(--plum) 0%,#3A1A6E 100%);padding:5rem 3rem;text-align:center;color:#fff;position:relative;overflow:hidden}
+.global-strip::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:40px 40px}
 .global-strip h2{font-family:var(--font-head);font-weight:800;font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;margin-bottom:0.75rem;position:relative}
 .global-strip p{font-size:1.05rem;opacity:0.8;max-width:540px;margin:0 auto 2rem;line-height:1.7;position:relative}
-.global-regions{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
-  margin-bottom:2.5rem;position:relative;
-}
-.region-badge{
-  padding:8px 18px;border-radius:99px;
-  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
-  font-size:13px;font-weight:500;color:#fff;
-  display:flex;align-items:center;gap:6px;
-}
+.global-regions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:2.5rem;position:relative}
+.region-badge{padding:8px 18px;border-radius:99px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);font-size:13px;font-weight:500;color:#fff;display:flex;align-items:center;gap:6px}
 .region-badge.active{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5)}
-.btn-light{
-  padding:13px 28px;border-radius:99px;
-  background:#fff;color:var(--plum);
-  font-family:var(--font-body);font-size:14px;font-weight:700;
-  border:none;cursor:pointer;text-decoration:none;
-  transition:all 0.22s;display:inline-flex;align-items:center;gap:8px;position:relative;
-}
+.btn-light{padding:13px 28px;border-radius:99px;background:#fff;color:var(--plum);font-family:var(--font-body);font-size:14px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:8px;position:relative}
 .btn-light:hover{background:var(--plum3);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.2)}
-
-/* ── CONTACT ── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
 .contact-form{display:flex;flex-direction:column;gap:14px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-field{display:flex;flex-direction:column;gap:6px}
 .form-field label{font-size:12px;font-weight:600;color:var(--ink2);letter-spacing:0.04em}
-.form-field input,.form-field select,.form-field textarea{
-  padding:11px 14px;border-radius:var(--rad-sm);
-  border:1.5px solid var(--border2);background:#fff;
-  font-family:var(--font-body);font-size:14px;color:var(--ink);
-  outline:none;transition:border-color 0.18s,box-shadow 0.18s;resize:none;
-}
-.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
-  border-color:var(--plum);box-shadow:0 0 0 3px rgba(92,45,143,0.1);
-}
-.form-submit{
-  padding:13px;border-radius:99px;background:var(--plum);color:#fff;
-  font-family:var(--font-body);font-size:14px;font-weight:600;
-  border:none;cursor:pointer;transition:all 0.22s;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-}
+.form-field input,.form-field select,.form-field textarea{padding:11px 14px;border-radius:var(--rad-sm);border:1.5px solid var(--border2);background:#fff;font-family:var(--font-body);font-size:14px;color:var(--ink);outline:none;transition:border-color 0.18s,box-shadow 0.18s;resize:none}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--plum);box-shadow:0 0 0 3px rgba(92,45,143,0.1)}
+.form-submit{padding:13px;border-radius:99px;background:var(--plum);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;border:none;cursor:pointer;transition:all 0.22s;display:flex;align-items:center;justify-content:center;gap:8px}
 .form-submit:hover{background:var(--plum2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(92,45,143,0.3)}
 .contact-info{display:flex;flex-direction:column;gap:16px}
-.contact-info-card{
-  padding:1.25rem 1.5rem;border-radius:var(--radius);border:1px solid var(--border);
-  background:#fff;display:flex;align-items:flex-start;gap:14px;
-}
+.contact-info-card{padding:1.25rem 1.5rem;border-radius:var(--radius);border:1px solid var(--border);background:#fff;display:flex;align-items:flex-start;gap:14px}
 .ci-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
 .ci-label{font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px}
 .ci-value{font-size:14px;color:var(--ink2);font-weight:500}
-
-/* ── FOOTER ── */
-footer{
-  background:var(--ink);color:#fff;padding:4rem 3rem 2rem;
-}
+footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.1)}
 .footer-brand-text{font-family:var(--font-head);font-weight:700;font-size:1.05rem;margin-bottom:0.4rem}
@@ -352,8 +161,6 @@ footer{
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;font-size:12px;color:rgba(255,255,255,0.35);flex-wrap:wrap;gap:0.5rem}
 .footer-badges{display:flex;gap:8px}
 .footer-badge{padding:4px 10px;border-radius:99px;border:1px solid rgba(255,255,255,0.12);font-size:11px;color:rgba(255,255,255,0.45)}
-
-/* ── ANIMATIONS ── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:none}
 .reveal-delay-1{transition-delay:0.1s}
@@ -361,102 +168,61 @@ footer{
 .reveal-delay-3{transition-delay:0.3s}
 
 /* ── MODAL ── */
-.modal-overlay{
-  position:fixed;inset:0;z-index:800;
-  background:rgba(13,13,18,0.6);backdrop-filter:blur(8px);
-  display:flex;align-items:center;justify-content:center;padding:1rem;
-  opacity:0;pointer-events:none;transition:opacity 0.28s;
-}
+.modal-overlay{position:fixed;inset:0;z-index:800;background:rgba(13,13,18,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.28s}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{
-  background:#fff;border-radius:20px;border:1px solid var(--border);
-  width:100%;max-width:580px;max-height:88vh;overflow-y:auto;
-  transform:scale(0.94) translateY(16px);opacity:0;
-  transition:transform 0.32s cubic-bezier(0.34,1.56,0.64,1),opacity 0.28s;
-  box-shadow:0 40px 80px rgba(13,13,18,0.22);
-}
+.modal{background:#fff;border-radius:20px;border:1px solid var(--border);width:100%;max-width:620px;max-height:88vh;overflow-y:auto;transform:scale(0.94) translateY(16px);opacity:0;transition:transform 0.32s cubic-bezier(0.34,1.56,0.64,1),opacity 0.28s;box-shadow:0 40px 80px rgba(13,13,18,0.22)}
 .modal-overlay.open .modal{transform:scale(1) translateY(0);opacity:1}
-.modal-head{
-  padding:1.75rem 1.75rem 1.25rem;border-bottom:1px solid var(--border);
-  display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
-}
+.modal-head{padding:1.75rem 1.75rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .modal-head h2{font-family:var(--font-head);font-weight:800;font-size:1.4rem;color:var(--ink);letter-spacing:-0.02em}
 .modal-head p{font-size:13px;color:var(--ink2);margin-top:3px}
-.modal-close{
-  width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border2);
-  background:transparent;cursor:pointer;font-size:16px;color:var(--ink2);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  transition:all 0.18s;
-}
+.modal-close{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border2);background:transparent;cursor:pointer;font-size:16px;color:var(--ink2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.18s}
 .modal-close:hover{background:var(--plum3);border-color:var(--plum);color:var(--plum)}
 .modal-body{padding:1.5rem 1.75rem}
-.modal-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
-.modal-tab{
-  padding:7px 15px;border-radius:99px;border:1.5px solid var(--border2);
-  background:transparent;cursor:pointer;font-family:var(--font-body);font-size:13px;font-weight:500;
-  color:var(--ink2);transition:all 0.18s;white-space:nowrap;
-}
+
+/* Tab row with category dividers */
+.modal-cat-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin:1rem 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.modal-cat-label:first-child{margin-top:0}
+.modal-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.modal-tab{padding:7px 15px;border-radius:99px;border:1.5px solid var(--border2);background:transparent;cursor:pointer;font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--ink2);transition:all 0.18s;white-space:nowrap}
 .modal-tab:hover{border-color:var(--plum);color:var(--plum);background:var(--plum3)}
 .modal-tab.active{background:var(--plum);border-color:var(--plum);color:#fff}
 .modal-tab .cs{font-size:9px;text-transform:uppercase;letter-spacing:0.06em;background:rgba(233,30,140,0.12);color:var(--accent);padding:2px 6px;border-radius:99px;margin-left:4px}
+.modal-tab .joke-badge{font-size:9px;text-transform:uppercase;letter-spacing:0.06em;background:rgba(234,179,8,0.15);color:#92400E;padding:2px 6px;border-radius:99px;margin-left:4px}
+.modal-tab.joke-tab{border-color:rgba(234,179,8,0.3)}
+.modal-tab.joke-tab.active{background:linear-gradient(135deg,#D97706,#F59E0B);border-color:#D97706}
 .modal-countries{display:flex;flex-direction:column;gap:6px;animation:fadeUp 0.22s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.modal-country{
-  display:flex;align-items:center;gap:12px;padding:13px 16px;
-  border-radius:10px;border:1px solid var(--border);background:var(--off);
-  text-decoration:none;color:var(--ink);transition:all 0.18s;
-}
+.modal-country{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:10px;border:1px solid var(--border);background:var(--off);text-decoration:none;color:var(--ink);transition:all 0.18s}
 .modal-country:hover{border-color:var(--plum2);background:var(--plum3);transform:translateX(4px)}
+.modal-country.joke-entry{background:#FFFBEB;border-color:rgba(234,179,8,0.25)}
+.modal-country.joke-entry:hover{background:#FEF3C7;border-color:#D97706}
 .mc-flag{font-size:1.4rem;flex-shrink:0}
 .mc-name{font-weight:600;font-size:14px;flex:1}
 .mc-domain{font-size:11.5px;color:var(--plum2);font-weight:400}
+.mc-domain.joke-domain{color:#D97706}
+.mc-note{font-size:11px;color:var(--ink3);font-style:italic;margin-top:1px}
 .mc-arrow{color:var(--plum2);opacity:0;transition:opacity 0.15s,transform 0.15s;font-size:14px}
 .modal-country:hover .mc-arrow{opacity:1;transform:translateX(3px)}
 .modal-country.continent-link{border-color:var(--border2)}
-.mc-badge{font-size:10px;background:var(--plum3);color:var(--plum);padding:3px 8px;border-radius:99px;font-weight:600}
+.mc-badge{font-size:10px;background:var(--plum3);color:var(--plum);padding:3px 8px;border-radius:99px;font-weight:600;white-space:nowrap}
+.mc-badge.soon-badge{background:#F3F4F6;color:var(--ink3)}
 .modal-soon{text-align:center;padding:3rem 1rem;color:var(--ink3)}
 .modal-soon .si{font-size:2.5rem;margin-bottom:0.75rem}
 .modal-soon h3{font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:0.4rem}
-.modal-foot{
-  padding:1rem 1.75rem 1.5rem;border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-}
+.modal-foot{padding:1rem 1.75rem 1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .modal-foot p{font-size:12px;color:var(--ink3);flex:1;line-height:1.5}
-.btn-cancel{
-  padding:9px 20px;border-radius:99px;border:1.5px solid var(--border2);
-  background:transparent;color:var(--ink2);font-family:var(--font-body);font-size:13px;font-weight:600;
-  cursor:pointer;transition:all 0.18s;white-space:nowrap;display:flex;align-items:center;gap:6px;
-}
+.btn-cancel{padding:9px 20px;border-radius:99px;border:1.5px solid var(--border2);background:transparent;color:var(--ink2);font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.18s;white-space:nowrap;display:flex;align-items:center;gap:6px}
 .btn-cancel:hover{background:var(--plum3);border-color:var(--plum);color:var(--plum)}
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
-  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2rem}
-  .services-grid{grid-template-columns:1fr 1fr}
-  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
-  .nav-links{display:none}
-  .nav-mobile-btn{display:flex}
-}
-@media(max-width:600px){
-  nav{padding:0 1.25rem}
-  .hero{padding:calc(var(--nav-h)+3rem) 1.25rem 3rem}
-  .section{padding:4rem 1.25rem}
-  .section-full{padding:4rem 1.25rem}
-  .services-grid{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr}
-  .global-strip{padding:3.5rem 1.25rem}
-  .form-row{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;align-items:flex-start}
-}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:2.5rem}.about-grid,.contact-grid{grid-template-columns:1fr;gap:2rem}.services-grid{grid-template-columns:1fr 1fr}.footer-top{grid-template-columns:1fr 1fr;gap:2rem}.nav-links{display:none}.nav-mobile-btn{display:flex}}
+@media(max-width:600px){nav{padding:0 1.25rem}.hero{padding:calc(var(--nav-h)+3rem) 1.25rem 3rem}.section{padding:4rem 1.25rem}.section-full{padding:4rem 1.25rem}.services-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.global-strip{padding:3.5rem 1.25rem}.form-row{grid-template-columns:1fr}.footer-bottom{flex-direction:column;align-items:flex-start}}
+@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="cursor"></div>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="nav-logo-mark">✦</div>
@@ -477,7 +243,6 @@ footer{
   </button>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMobile()">About MPC</a>
   <a href="#ventures" onclick="closeMobile()">Our Ventures</a>
@@ -486,7 +251,6 @@ footer{
   <a href="#" onclick="closeMobile();openModal()">Select Region ↗</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -517,7 +281,6 @@ footer{
   </div>
 </section>
 
-<!-- ABOUT -->
 <div class="section-full" id="about">
   <div class="section">
     <div class="section-label">About MPC</div>
@@ -547,7 +310,6 @@ footer{
   </div>
 </div>
 
-<!-- VENTURES -->
 <section class="section" id="ventures">
   <div class="ventures-header">
     <div>
@@ -559,7 +321,6 @@ footer{
   <div class="ventures-grid" id="venturesGrid"></div>
 </section>
 
-<!-- SERVICES -->
 <div class="section-full" id="services">
   <div class="section">
     <div class="section-label">What We Offer</div>
@@ -569,7 +330,6 @@ footer{
   </div>
 </div>
 
-<!-- GLOBAL STRIP -->
 <div class="global-strip">
   <h2>Operating Internationally</h2>
   <p>Magic Plum Company serves audiences across Europe and beyond, with dedicated regional sites for a localised experience.</p>
@@ -577,7 +337,6 @@ footer{
   <button class="btn-light" onclick="openModal()">Find Your Regional Site ↗</button>
 </div>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
   <div class="section-label">Get In Touch</div>
   <h2 class="section-title reveal">Let's Build Something</h2>
@@ -625,7 +384,6 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -678,10 +436,7 @@ footer{
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
-    <div class="modal-body">
-      <div class="modal-tabs" id="modalTabs"></div>
-      <div id="modalCountries"></div>
-    </div>
+    <div class="modal-body" id="modalBody"></div>
     <div class="modal-foot">
       <p>Can't find your region? You're on the international site — you're in the right place.</p>
       <button class="btn-cancel" onclick="closeModal()">✕ Cancel &amp; Stay</button>
@@ -690,108 +445,184 @@ footer{
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-// DATA — edit this to add ventures, regions, etc.
-// ═══════════════════════════════════════════
-
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║  VENTURES — add/edit ventures here                              ║
+// ╚══════════════════════════════════════════════════════════════════╝
 const VENTURES = [
-  {
-    name: 'Femboy Media Corporation',
-    icon: '🌈', iconBg: '#FFF0F5',
-    tag: 'Entertainment',
-    desc: 'Modern entertainment, creator culture, and expressive digital media for diverse communities.',
-    url: '#',
-  },
-  {
-    name: 'Prism Media Group',
-    icon: '💎', iconBg: '#EFF6FF',
-    tag: 'Branding & Media',
-    desc: 'Branding, visuals, campaigns, and colourful storytelling that cuts through the noise.',
-    url: '#',
-  },
-  {
-    name: 'MagicByte ICT',
-    icon: '💻', iconBg: '#F0FDF4',
-    tag: 'Technology',
-    desc: 'Tech support, web solutions, systems, and comprehensive ICT services for businesses.',
-    url: '#',
-  },
-  {
-    name: 'United Broadcasting Company',
-    icon: '📡', iconBg: '#F0F9FF',
-    tag: 'Broadcasting',
-    desc: 'Broadcasting, radio, streaming, and live media experiences delivered globally.',
-    url: '#',
-  },
-  {
-    name: 'Plum Academy',
-    icon: '📚', iconBg: '#FEFCE8',
-    tag: 'Education',
-    desc: 'School support, revision tools, and educational resources for learners at every stage.',
-    url: '#',
-  },
-  {
-    name: 'Anarchy Group',
-    icon: '🔥', iconBg: '#FFF7ED',
-    tag: 'Creative',
-    desc: 'Media, chaos, destruction, and no-form creativity — bold ideas without boundaries.',
-    url: '#',
-  },
-  {
-    name: 'Revit Helpdesk',
-    icon: '📐', iconBg: '#F5F3FF',
-    tag: 'Technical Support',
-    desc: 'CAD, Revit, Autodesk, and technical support for architects, engineers, and designers.',
-    url: '#',
-  },
-  {
-    name: 'UK Television Clips',
-    icon: '📺', iconBg: '#FFF1F2',
-    tag: 'Archives & Media',
-    desc: 'British television archives, memorable clips, broadcasting history, and entertainment moments.',
-    url: '#',
-  },
-  {
-    name: 'Plum Identity',
-    icon: '🪪', iconBg: '#F0F9FF',
-    tag: 'Platform',
-    desc: 'A unified sign-on and identity platform across the entire Magic Plum ecosystem.',
-    url: '#',
-  },
+  { name:'Femboy Media Corporation', icon:'🌈', iconBg:'#FFF0F5', tag:'Entertainment',     desc:'Modern entertainment, creator culture, and expressive digital media for diverse communities.', url:'#' },
+  { name:'Prism Media Group',        icon:'💎', iconBg:'#EFF6FF', tag:'Branding & Media',  desc:'Branding, visuals, campaigns, and colourful storytelling that cuts through the noise.', url:'#' },
+  { name:'MagicByte ICT',            icon:'💻', iconBg:'#F0FDF4', tag:'Technology',        desc:'Tech support, web solutions, systems, and comprehensive ICT services for businesses.', url:'#' },
+  { name:'United Broadcasting Company', icon:'📡', iconBg:'#F0F9FF', tag:'Broadcasting',  desc:'Broadcasting, radio, streaming, and live media experiences delivered globally.', url:'#' },
+  { name:'Plum Academy',             icon:'📚', iconBg:'#FEFCE8', tag:'Education',         desc:'School support, revision tools, and educational resources for learners at every stage.', url:'#' },
+  { name:'Anarchy Group',            icon:'🔥', iconBg:'#FFF7ED', tag:'Creative',          desc:'Media, chaos, destruction, and no-form creativity — bold ideas without boundaries.', url:'#' },
+  { name:'Revit Helpdesk',           icon:'📐', iconBg:'#F5F3FF', tag:'Technical Support', desc:'CAD, Revit, Autodesk, and technical support for architects, engineers, and designers.', url:'#' },
+  { name:'UK Television Clips',      icon:'📺', iconBg:'#FFF1F2', tag:'Archives & Media',  desc:'British television archives, memorable clips, broadcasting history, and entertainment moments.', url:'#' },
+  { name:'Plum Identity',            icon:'🪪', iconBg:'#F0F9FF', tag:'Platform',          desc:'A unified sign-on and identity platform across the entire Magic Plum ecosystem.', url:'#' },
 ];
 
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║  SERVICES — add/edit services here                              ║
+// ╚══════════════════════════════════════════════════════════════════╝
 const SERVICES = [
-  { icon: '🎨', name: 'Creative & Branding', desc: 'Visual identity, campaigns, and expressive media design from Prism Media Group and the wider MPC creative family.' },
-  { icon: '💻', name: 'Technology & ICT', desc: 'Web development, systems, tech support, and digital infrastructure through MagicByte ICT.' },
-  { icon: '📡', name: 'Media & Broadcasting', desc: 'Radio, streaming, live media, and broadcasting services through United Broadcasting Company.' },
-  { icon: '🎓', name: 'Education & Learning', desc: 'School revision, learning support, and educational content via Plum Academy.' },
-  { icon: '🔐', name: 'Identity & Platforms', desc: 'Unified authentication and platform identity across all ventures through Plum Identity.' },
-  { icon: '🤝', name: 'Partnerships', desc: 'Strategic collaboration, cross-venture projects, and international creative partnerships.' },
+  { icon:'🎨', name:'Creative & Branding',    desc:'Visual identity, campaigns, and expressive media design from Prism Media Group and the wider MPC creative family.' },
+  { icon:'💻', name:'Technology & ICT',       desc:'Web development, systems, tech support, and digital infrastructure through MagicByte ICT.' },
+  { icon:'📡', name:'Media & Broadcasting',   desc:'Radio, streaming, live media, and broadcasting services through United Broadcasting Company.' },
+  { icon:'🎓', name:'Education & Learning',   desc:'School revision, learning support, and educational content via Plum Academy.' },
+  { icon:'🔐', name:'Identity & Platforms',   desc:'Unified authentication and platform identity across all ventures through Plum Identity.' },
+  { icon:'🤝', name:'Partnerships',           desc:'Strategic collaboration, cross-venture projects, and international creative partnerships.' },
 ];
+
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║  REGION SELECTOR DATA                                                       ║
+// ║                                                                             ║
+// ║  Structure:                                                                 ║
+// ║  {                                                                          ║
+// ║    continent: 'Name',     — shown as tab label                             ║
+// ║    icon: '🌍',            — emoji shown on tab                             ║
+// ║    joke: true,            — (optional) marks as a fun/joke tab             ║
+// ║    continentUrl: '...',   — (optional) "all of X" link at top              ║
+// ║    continentDomain: '...',— domain shown under "all of X"                  ║
+// ║    countries: [                                                             ║
+// ║      {                                                                      ║
+// ║        name: 'Country',   — display name                                   ║
+// ║        flag: '🇬🇧',       — flag emoji                                     ║
+// ║        url:  'https://…', — destination URL (use '#' if not live yet)      ║
+// ║        domain: '…co.uk',  — domain shown in small text                     ║
+// ║        note: '…',         — (optional) small italic sub-note               ║
+// ║        comingSoon: true,  — (optional) shows "Coming Soon" badge, no link  ║
+// ║      },                                                                     ║
+// ║    ],                                                                       ║
+// ║  }                                                                          ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
 
 const REGIONS = [
+
+  // ── REAL REGIONS ──────────────────────────────────────────────────────────
+
   {
     continent: 'Europe',
     icon: '🌍',
     continentUrl: 'https://magicplum.eu.org',
     continentDomain: 'magicplum.eu.org',
     countries: [
-      { name: 'United Kingdom', flag: '🇬🇧', url: 'https://magicplum.co.uk', domain: 'magicplum.co.uk' },
+      { name:'United Kingdom', flag:'🇬🇧', url:'https://magicplum.co.uk',  domain:'magicplum.co.uk' },
+      { name:'Germany',        flag:'🇩🇪', url:'#', domain:'magicplum.de',       comingSoon:true },
+      { name:'France',         flag:'🇫🇷', url:'#', domain:'magicplum.fr',       comingSoon:true },
+      { name:'Netherlands',    flag:'🇳🇱', url:'#', domain:'magicplum.nl',       comingSoon:true },
+      { name:'Spain',          flag:'🇪🇸', url:'#', domain:'magicplum.es',       comingSoon:true },
+      { name:'Italy',          flag:'🇮🇹', url:'#', domain:'magicplum.it',       comingSoon:true },
+      { name:'Poland',         flag:'🇵🇱', url:'#', domain:'magicplum.pl',       comingSoon:true },
+      { name:'Sweden',         flag:'🇸🇪', url:'#', domain:'magicplum.se',       comingSoon:true },
     ],
   },
-  { continent: 'North America', icon: '🌎', comingSoon: true, countries: [] },
-  { continent: 'Asia Pacific',  icon: '🌏', comingSoon: true, countries: [] },
-  { continent: 'South America', icon: '🌎', comingSoon: true, countries: [] },
-  { continent: 'Africa',        icon: '🌍', comingSoon: true, countries: [] },
-  { continent: 'Oceania',       icon: '🌏', comingSoon: true, countries: [] },
+
+  {
+    continent: 'North America',
+    icon: '🌎',
+    countries: [
+      { name:'United States',  flag:'🇺🇸', url:'#', domain:'magicplum.us',       comingSoon:true },
+      { name:'Canada',         flag:'🇨🇦', url:'#', domain:'magicplum.ca',       comingSoon:true },
+      { name:'Mexico',         flag:'🇲🇽', url:'#', domain:'magicplum.mx',       comingSoon:true },
+    ],
+  },
+
+  {
+    continent: 'Asia Pacific',
+    icon: '🌏',
+    countries: [
+      { name:'Australia',      flag:'🇦🇺', url:'#', domain:'magicplum.com.au',   comingSoon:true },
+      { name:'New Zealand',    flag:'🇳🇿', url:'#', domain:'magicplum.co.nz',    comingSoon:true },
+      { name:'Japan',          flag:'🇯🇵', url:'#', domain:'magicplum.jp',       comingSoon:true },
+      { name:'South Korea',    flag:'🇰🇷', url:'#', domain:'magicplum.kr',       comingSoon:true },
+      { name:'India',          flag:'🇮🇳', url:'#', domain:'magicplum.in',       comingSoon:true },
+      { name:'Singapore',      flag:'🇸🇬', url:'#', domain:'magicplum.sg',       comingSoon:true },
+    ],
+  },
+
+  {
+    continent: 'South America',
+    icon: '🌎',
+    countries: [
+      { name:'Brazil',         flag:'🇧🇷', url:'#', domain:'magicplum.com.br',   comingSoon:true },
+      { name:'Argentina',      flag:'🇦🇷', url:'#', domain:'magicplum.ar',       comingSoon:true },
+      { name:'Chile',          flag:'🇨🇱', url:'#', domain:'magicplum.cl',       comingSoon:true },
+    ],
+  },
+
+  {
+    continent: 'Africa',
+    icon: '🌍',
+    countries: [
+      { name:'South Africa',   flag:'🇿🇦', url:'#', domain:'magicplum.co.za',    comingSoon:true },
+      { name:'Nigeria',        flag:'🇳🇬', url:'#', domain:'magicplum.ng',       comingSoon:true },
+      { name:'Kenya',          flag:'🇰🇪', url:'#', domain:'magicplum.co.ke',    comingSoon:true },
+    ],
+  },
+
+  {
+    continent: 'Middle East',
+    icon: '🕌',
+    countries: [
+      { name:'UAE',            flag:'🇦🇪', url:'#', domain:'magicplum.ae',       comingSoon:true },
+      { name:'Saudi Arabia',   flag:'🇸🇦', url:'#', domain:'magicplum.sa',       comingSoon:true },
+    ],
+  },
+
+  // ── FUN / JOKE REGIONS ────────────────────────────────────────────────────
+  // Remove or comment out any of these you don't want
+
+  {
+    continent: 'Moon 🌕',
+    icon: '🚀',
+    joke: true,
+    countries: [
+      { name:'Sea of Tranquility', flag:'🌑', url:'#', domain:'magicplum.moon',   note:'Low gravity, high vibes', comingSoon:true },
+      { name:'Dark Side',          flag:'🌚', url:'#', domain:'magicplum.dark',   note:'No signal yet — working on it', comingSoon:true },
+    ],
+  },
+
+  {
+    continent: 'Underwater 🌊',
+    icon: '🐠',
+    joke: true,
+    countries: [
+      { name:'Atlantis',           flag:'🏛️', url:'#', domain:'magicplum.atl',   note:'Pending mythological domain registration', comingSoon:true },
+      { name:'Pacific Ocean Floor',flag:'🦑', url:'#', domain:'magicplum.deep',  note:'Very slow broadband down here', comingSoon:true },
+    ],
+  },
+
+  {
+    continent: 'Antarctica 🧊',
+    icon: '🐧',
+    joke: true,
+    continentUrl: '#',
+    continentDomain: 'magicplum.aq',
+    countries: [
+      { name:'Penguin Territory',  flag:'🐧', url:'#', domain:'magicplum.aq',    note:'Our coldest office yet', comingSoon:true },
+      { name:'Scott Base',         flag:'🏔️', url:'#', domain:'magicplum.ice',   note:'Very limited wifi', comingSoon:true },
+    ],
+  },
+
+  {
+    continent: 'The Metaverse',
+    icon: '🕹️',
+    joke: true,
+    countries: [
+      { name:'Roblox World',       flag:'🟥', url:'#', domain:'magicplum.rblx',  note:'Coming to a server near you', comingSoon:true },
+      { name:'Minecraft Dimension',flag:'⛏️', url:'#', domain:'magicplum.mine',  note:'Still building the office', comingSoon:true },
+      { name:'The Void',           flag:'🌀', url:'#', domain:'magicplum.void',  note:'undefined', comingSoon:true },
+    ],
+  },
+
 ];
 
-// ═══════════════════════════════════════════
-// RENDER VENTURES
-// ═══════════════════════════════════════════
-(function renderVentures() {
-  const grid = document.getElementById('venturesGrid');
-  grid.innerHTML = VENTURES.map(v => `
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║  END OF EDITABLE DATA                                           ║
+// ╚══════════════════════════════════════════════════════════════════╝
+
+// ── RENDER VENTURES ──────────────────────────────────────────────────────────
+(function(){
+  document.getElementById('venturesGrid').innerHTML = VENTURES.map(v => `
     <a class="venture-card reveal" href="${v.url}">
       <div class="vc-top">
         <div class="vc-icon" style="background:${v.iconBg}">${v.icon}</div>
@@ -800,93 +631,116 @@ const REGIONS = [
       <div class="vc-name">${v.name}</div>
       <div class="vc-desc">${v.desc}</div>
       <span class="vc-link">Visit Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-    </a>
-  `).join('');
+    </a>`).join('');
 })();
 
-// ═══════════════════════════════════════════
-// RENDER SERVICES
-// ═══════════════════════════════════════════
-(function renderServices() {
-  const grid = document.getElementById('servicesGrid');
-  grid.innerHTML = SERVICES.map((s, i) => `
-    <div class="service-card reveal reveal-delay-${(i % 3) + 1}">
+// ── RENDER SERVICES ───────────────────────────────────────────────────────────
+(function(){
+  document.getElementById('servicesGrid').innerHTML = SERVICES.map((s,i) => `
+    <div class="service-card reveal reveal-delay-${(i%3)+1}">
       <div class="service-icon">${s.icon}</div>
       <div class="service-name">${s.name}</div>
       <div class="service-desc">${s.desc}</div>
-    </div>
-  `).join('');
+    </div>`).join('');
 })();
 
-// ═══════════════════════════════════════════
-// RENDER GLOBAL REGIONS STRIP
-// ═══════════════════════════════════════════
-(function renderRegionBadges() {
-  const el = document.getElementById('globalRegions');
+// ── RENDER GLOBAL REGION BADGES ──────────────────────────────────────────────
+(function(){
   const items = [
-    { label: '🇬🇧 United Kingdom', active: true },
-    { label: '🌍 Europe', active: true },
-    { label: '🌎 North America', active: false },
-    { label: '🌏 Asia Pacific', active: false },
-    { label: '🌍 Africa', active: false },
+    { label:'🇬🇧 United Kingdom', active:true },
+    { label:'🌍 Europe',          active:true },
+    { label:'🌎 North America',   active:false },
+    { label:'🌏 Asia Pacific',    active:false },
+    { label:'🌍 Africa',          active:false },
   ];
-  el.innerHTML = items.map(r => `<span class="region-badge${r.active ? ' active' : ''}">${r.label}${r.active ? '' : ' <span style="font-size:10px;opacity:0.6">Soon</span>'}</span>`).join('');
+  document.getElementById('globalRegions').innerHTML = items.map(r =>
+    `<span class="region-badge${r.active?' active':''}">${r.label}${r.active?'':' <span style="font-size:10px;opacity:0.6">Soon</span>'}</span>`
+  ).join('');
 })();
 
-// ═══════════════════════════════════════════
-// MODAL
-// ═══════════════════════════════════════════
+// ── MODAL ─────────────────────────────────────────────────────────────────────
 let activeContinent = REGIONS[0].continent;
 
-function buildModalTabs() {
-  const el = document.getElementById('modalTabs');
-  el.innerHTML = REGIONS.map(r => `
-    <button class="modal-tab${r.continent === activeContinent ? ' active' : ''}" onclick="setContinent('${r.continent}')">
-      ${r.icon} ${r.continent}${r.comingSoon ? '<span class="cs">Soon</span>' : ''}
-    </button>
-  `).join('');
+const realRegions = REGIONS.filter(r => !r.joke);
+const jokeRegions = REGIONS.filter(r => r.joke);
+
+function buildModal() {
+  const body = document.getElementById('modalBody');
+
+  // Real tabs
+  let html = `<div class="modal-cat-label">Real Regions</div>`;
+  html += `<div class="modal-tabs">`;
+  realRegions.forEach(r => {
+    html += `<button class="modal-tab${r.continent===activeContinent?' active':''}" onclick="setContinent('${r.continent}')">${r.icon} ${r.continent}</button>`;
+  });
+  html += `</div>`;
+
+  // Joke tabs
+  if (jokeRegions.length) {
+    html += `<div class="modal-cat-label" style="margin-top:1rem">✨ Exotic Destinations</div>`;
+    html += `<div class="modal-tabs">`;
+    jokeRegions.forEach(r => {
+      html += `<button class="modal-tab joke-tab${r.continent===activeContinent?' active':''}" onclick="setContinent('${r.continent}')">${r.icon} ${r.continent}<span class="joke-badge">Fun</span></button>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `<div id="modalCountries" style="margin-top:1.25rem"></div>`;
+  body.innerHTML = html;
+  renderModalCountries();
 }
 
 function setContinent(name) {
   activeContinent = name;
-  buildModalTabs();
-  renderModalCountries();
+  buildModal();
 }
 
 function renderModalCountries() {
   const r = REGIONS.find(x => x.continent === activeContinent);
+  if (!r) return;
   const el = document.getElementById('modalCountries');
-  if (r.comingSoon) {
-    el.innerHTML = `<div class="modal-soon"><div class="si">${r.icon}</div><h3>${r.continent} — Coming Soon</h3><p>We're expanding to ${r.continent} soon. Stay tuned!</p></div>`;
-    return;
-  }
-  let html = '<div class="modal-countries">';
+  const isJoke = r.joke;
+
+  let html = `<div class="modal-countries">`;
+
+  // Continent-wide link
   if (r.continentUrl) {
-    html += `<a class="modal-country continent-link" href="${r.continentUrl}" target="_blank" rel="noopener">
+    html += `<a class="modal-country continent-link${isJoke?' joke-entry':''}" href="${r.continentUrl}" target="_blank" rel="noopener">
       <span class="mc-flag">${r.icon}</span>
-      <span class="mc-name">All of ${r.continent}</span>
-      <span class="mc-domain">${r.continentDomain}</span>
+      <div style="flex:1;min-width:0">
+        <div class="mc-name">All of ${r.continent}</div>
+      </div>
+      <span class="mc-domain${isJoke?' joke-domain':''}">${r.continentDomain}</span>
       <span class="mc-badge">Regional</span>
       <span class="mc-arrow">→</span>
     </a>`;
   }
-  r.countries.forEach(c => {
-    html += `<a class="modal-country" href="${c.url}" target="_blank" rel="noopener">
-      <span class="mc-flag">${c.flag}</span>
-      <span class="mc-name">${c.name}</span>
-      <span class="mc-domain">${c.domain}</span>
-      <span class="mc-arrow">→</span>
-    </a>`;
-  });
-  html += '</div>';
+
+  if (r.countries.length === 0 && !r.continentUrl) {
+    html += `<div class="modal-soon"><div class="si">${r.icon}</div><h3>${r.continent} — Coming Soon</h3><p>We're expanding here soon. Stay tuned!</p></div>`;
+  } else {
+    r.countries.forEach(c => {
+      const el_tag = c.comingSoon ? 'div' : 'a';
+      const href_attr = c.comingSoon ? '' : `href="${c.url}" target="_blank" rel="noopener"`;
+      html += `<${el_tag} class="modal-country${isJoke?' joke-entry':''}" ${href_attr} style="${c.comingSoon?'opacity:0.75;cursor:default':''}">
+        <span class="mc-flag">${c.flag}</span>
+        <div style="flex:1;min-width:0">
+          <div class="mc-name">${c.name}</div>
+          ${c.note ? `<div class="mc-note">${c.note}</div>` : ''}
+        </div>
+        <span class="mc-domain${isJoke?' joke-domain':''}">${c.domain}</span>
+        ${c.comingSoon ? `<span class="mc-badge soon-badge">Coming Soon</span>` : `<span class="mc-arrow">→</span>`}
+      </${el_tag}>`;
+    });
+  }
+
+  html += `</div>`;
   el.innerHTML = html;
 }
 
 function openModal() {
-  buildModalTabs();
-  renderModalCountries();
-  const ov = document.getElementById('modalOverlay');
-  ov.classList.add('open');
+  buildModal();
+  document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
@@ -898,16 +752,11 @@ function closeModal() {
 document.getElementById('modalOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
-
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-// Auto-open on load
 window.addEventListener('DOMContentLoaded', () => setTimeout(openModal, 700));
 
-// ═══════════════════════════════════════════
-// SCROLL REVEAL
-// ═══════════════════════════════════════════
-const revealObserver = new IntersectionObserver((entries) => {
+// ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
+const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
 }, { threshold: 0.08 });
 
@@ -915,18 +764,14 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 }
 
-// ═══════════════════════════════════════════
-// NAV SCROLL
-// ═══════════════════════════════════════════
+// ── NAV ───────────────────────────────────────────────────────────────────────
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+}, { passive:true });
 
-// ═══════════════════════════════════════════
-// MOBILE MENU
-// ═══════════════════════════════════════════
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
 const mobileToggle = document.getElementById('mobileToggle');
-const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenu   = document.getElementById('mobileMenu');
 let menuOpen = false;
 
 mobileToggle.addEventListener('click', () => {
@@ -935,7 +780,7 @@ mobileToggle.addEventListener('click', () => {
   const spans = mobileToggle.querySelectorAll('span');
   if (menuOpen) {
     spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
-    spans[1].style.opacity = '0';
+    spans[1].style.opacity   = '0';
     spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
   } else {
     spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
@@ -948,23 +793,18 @@ function closeMobile() {
   mobileToggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
 }
 
-// ═══════════════════════════════════════════
-// CUSTOM CURSOR
-// ═══════════════════════════════════════════
+// ── CURSOR ────────────────────────────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
 document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-}, { passive: true });
-
+  cursor.style.top  = e.clientY + 'px';
+}, { passive:true });
 document.querySelectorAll('a,button').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('big'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
 });
 
-// ═══════════════════════════════════════════
-// TYPEWRITER CODE ANIMATION
-// ═══════════════════════════════════════════
+// ── TYPEWRITER ────────────────────────────────────────────────────────────────
 const CODE_LINES = [
   '<span class="cm">// Magic Plum Company International</span>',
   '<span class="kw">const</span> mpc = {',
@@ -981,90 +821,57 @@ const CODE_LINES = [
 (function typewriter() {
   const el = document.getElementById('typeTarget');
   let lineIdx = 0, charIdx = 0;
-  const stripped = CODE_LINES.map(l => l.replace(/<[^>]+>/g, ''));
-
-  function tick() {
-    if (lineIdx >= CODE_LINES.length) return;
-    const full = stripped[lineIdx];
-    if (charIdx <= full.length) {
-      const rendered = CODE_LINES.slice(0, lineIdx).join('<br>') + (lineIdx > 0 ? '<br>' : '') + CODE_LINES[lineIdx].replace(/<[^>]+>/g, '').slice(0, charIdx).replace(/</g,'&lt;').replace(full.slice(0,charIdx), () => {
-        // show the styled version up to charIdx visible chars
-        let visible = 0, result = '';
-        let inTag = false;
-        for (let i = 0; i < CODE_LINES[lineIdx].length; i++) {
-          const c = CODE_LINES[lineIdx][i];
-          if (c === '<') { inTag = true; result += c; continue; }
-          if (c === '>') { inTag = false; result += c; continue; }
-          if (inTag) { result += c; continue; }
-          if (visible < charIdx) { result += c; visible++; }
-          else break;
-        }
-        return result;
-      }) + '<span style="border-right:2px solid var(--accent);margin-left:1px;animation:cursorBlink 0.7s infinite">&nbsp;</span>';
-      el.innerHTML = CODE_LINES.slice(0, lineIdx).join('<br>') + (lineIdx > 0 ? '<br>' : '') + renderLineUpTo(lineIdx, charIdx);
-      charIdx++;
-      setTimeout(tick, charIdx === 1 ? 100 : 28);
-    } else {
-      lineIdx++;
-      charIdx = 0;
-      setTimeout(tick, 160);
-    }
-  }
 
   function renderLineUpTo(li, ci) {
     let visible = 0, result = '', inTag = false;
     const src = CODE_LINES[li];
     for (let i = 0; i < src.length; i++) {
       const c = src[i];
-      if (c === '<') { inTag = true; result += c; continue; }
+      if (c === '<') { inTag = true;  result += c; continue; }
       if (c === '>') { inTag = false; result += c; continue; }
-      if (inTag) { result += c; continue; }
-      if (visible < ci) { result += c; visible++; }
-      else break;
+      if (inTag)     { result += c; continue; }
+      if (visible < ci) { result += c; visible++; } else break;
     }
     return result + '<span style="border-right:2px solid var(--accent)">&nbsp;</span>';
   }
 
+  function tick() {
+    if (lineIdx >= CODE_LINES.length) return;
+    const stripped = CODE_LINES[lineIdx].replace(/<[^>]+>/g, '');
+    if (charIdx <= stripped.length) {
+      el.innerHTML = CODE_LINES.slice(0, lineIdx).join('<br>') + (lineIdx > 0 ? '<br>' : '') + renderLineUpTo(lineIdx, charIdx);
+      charIdx++;
+      setTimeout(tick, charIdx === 1 ? 100 : 28);
+    } else {
+      lineIdx++; charIdx = 0;
+      setTimeout(tick, 160);
+    }
+  }
   tick();
 })();
 
-// ═══════════════════════════════════════════
-// COUNTER ANIMATION
-// ═══════════════════════════════════════════
+// ── COUNTERS ──────────────────────────────────────────────────────────────────
 function animateCounters() {
   document.querySelectorAll('[data-count]').forEach(el => {
     const target = parseInt(el.dataset.count);
     let current = 0;
-    const step = () => {
-      current = Math.min(current + 1, target);
-      el.textContent = current;
-      if (current < target) setTimeout(step, 120);
-    };
+    const step = () => { current = Math.min(current+1, target); el.textContent = current; if (current < target) setTimeout(step, 120); };
     setTimeout(step, 800);
   });
 }
 
-// ═══════════════════════════════════════════
-// TICKER ROTATION
-// ═══════════════════════════════════════════
-const TICKERS = [
-  '9 active ventures worldwide',
-  'Operating across Europe & expanding',
-  'Creative · Media · Technology · Education',
-  'Powered by JavaScript',
-];
+// ── TICKER ────────────────────────────────────────────────────────────────────
+const TICKERS = ['9 active ventures worldwide','Operating across Europe & expanding','Creative · Media · Technology · Education','Powered by JavaScript'];
 let tickerIdx = 0;
+const tickerEl = document.getElementById('tickerText');
+tickerEl.style.transition = 'opacity 0.25s';
 setInterval(() => {
   tickerIdx = (tickerIdx + 1) % TICKERS.length;
-  const el = document.getElementById('tickerText');
-  el.style.opacity = '0';
-  setTimeout(() => { el.textContent = TICKERS[tickerIdx]; el.style.opacity = '1'; }, 250);
+  tickerEl.style.opacity = '0';
+  setTimeout(() => { tickerEl.textContent = TICKERS[tickerIdx]; tickerEl.style.opacity = '1'; }, 250);
 }, 3000);
-document.getElementById('tickerText').style.transition = 'opacity 0.25s';
 
-// ═══════════════════════════════════════════
-// FORM SUBMIT
-// ═══════════════════════════════════════════
+// ── FORM ──────────────────────────────────────────────────────────────────────
 function handleFormSubmit(btn) {
   btn.textContent = '✓ Message Sent!';
   btn.style.background = '#16A34A';
@@ -1074,17 +881,8 @@ function handleFormSubmit(btn) {
   }, 3000);
 }
 
-// ═══════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', () => {
-  initReveal();
-  animateCounters();
-});
+// ── INIT ──────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => { initReveal(); animateCounters(); });
 </script>
-
-<style>
-@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
-</style>
 </body>
 </html>
