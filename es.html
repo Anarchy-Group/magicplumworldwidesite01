@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta property="og:title" content="Magic Plum Company — España">
+<meta property="og:description" content="Magic Plum Company España — Proyectos creativos, medios y tecnología">
+<meta property="og:image" content="https://www.magicplum.es/logo.jpg">
+<meta property="og:url" content="https://www.magicplum.es/">
+<meta name="theme-color" content="#FFB6C1">
+<title>Magic Plum Company — España</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#ffffff;
+  --off:#F7F6F3;
+  --ink:#0D0D12;
+  --ink2:#3A3A4A;
+  --ink3:#7A7A8A;
+  --plum:#5C2D8F;
+  --plum2:#7B4BB5;
+  --plum3:#EDE5F8;
+  --accent:#E91E8C;
+  --accent2:#FF5CAA;
+  --border:rgba(92,45,143,0.12);
+  --border2:rgba(92,45,143,0.22);
+  --radius:14px;
+  --rad-sm:8px;
+  --font-head:'Syne',sans-serif;
+  --font-body:'Instrument Sans',sans-serif;
+  --nav-h:68px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--white);color:var(--ink);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--plum2);border-radius:99px}
+#cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.08s,width 0.2s,height 0.2s,opacity 0.2s;mix-blend-mode:multiply}
+#cursor.big{width:36px;height:36px;opacity:0.35}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(92,45,143,0.09)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--plum),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.nav-logo-text{font-family:var(--font-head);font-weight:700;font-size:1rem;color:var(--ink);letter-spacing:-0.01em;line-height:1.1}
+.nav-logo-sub{font-size:9px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--plum2);margin-top:1px}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--ink2);text-decoration:none;letter-spacing:0.01em;transition:color 0.18s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.2s}
+.nav-links a:hover{color:var(--plum)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-es-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:99px;background:var(--plum3);border:1.5px solid var(--border2);font-size:12px;font-weight:600;color:var(--plum);letter-spacing:0.02em}
+.nav-mobile-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.25s}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(255,255,255,0.98);z-index:490;padding:calc(var(--nav-h) + 2rem) 2rem 2rem;flex-direction:column;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--ink);text-decoration:none;padding:0.6rem 0;border-bottom:1px solid var(--border);transition:color 0.18s}
+.mobile-menu a:hover{color:var(--plum)}
+.hero{min-height:100vh;padding:calc(var(--nav-h) + 5rem) 3rem 5rem;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 55% 55% at 85% 20%, rgba(92,45,143,0.09) 0%, transparent 65%),radial-gradient(ellipse 40% 40% at 15% 80%, rgba(233,30,140,0.06) 0%, transparent 60%)}
+.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(92,45,143,0.045) 1px, transparent 1px),linear-gradient(90deg, rgba(92,45,143,0.045) 1px, transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--plum2);margin-bottom:1.4rem}
+.hero-eyebrow::before{content:'';width:24px;height:2px;background:var(--accent);border-radius:2px}
+.hero h1{font-family:var(--font-head);font-weight:800;font-size:clamp(2.4rem,4.5vw,3.8rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.25rem}
+.hero h1 .hl{color:var(--plum)}
+.hero h1 .hl2{color:var(--accent);font-style:italic}
+.hero-desc{font-size:1.05rem;color:var(--ink2);line-height:1.7;max-width:480px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{padding:13px 28px;border-radius:99px;background:var(--plum);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--plum2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(92,45,143,0.28)}
+.btn-secondary{padding:13px 28px;border-radius:99px;background:transparent;color:var(--plum);border:1.5px solid var(--border2);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{background:var(--plum3);border-color:var(--plum);transform:translateY(-1px)}
+.hero-visual{position:relative}
+.hero-card{background:#fff;border-radius:20px;border:1px solid var(--border);padding:2rem;box-shadow:0 20px 60px rgba(92,45,143,0.1);position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(92,45,143,0.04) 0%,rgba(233,30,140,0.03) 100%)}
+.hero-code{font-family:'Courier New',monospace;font-size:13px;line-height:1.7;color:var(--ink2);position:relative;z-index:1}
+.hero-code .kw{color:var(--plum);font-weight:700}
+.hero-code .str{color:var(--accent)}
+.hero-code .fn{color:#0E7490}
+.hero-code .cm{color:var(--ink3);font-style:italic}
+.hero-code .num{color:#D97706}
+.hero-ticker{margin-top:1.25rem;padding:10px 14px;background:var(--plum3);border-radius:var(--rad-sm);font-size:12px;color:var(--plum);font-weight:600;display:flex;align-items:center;gap:8px;position:relative;z-index:1}
+.ticker-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat{text-align:center}
+.stat-num{font-family:var(--font-head);font-weight:800;font-size:1.8rem;color:var(--plum);line-height:1}
+.stat-label{font-size:11px;color:var(--ink3);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px}
+.section{padding:6rem 3rem;max-width:1200px;margin:0 auto}
+.section-full{padding:5rem 3rem;background:var(--off)}
+.section-full .section{padding:0;background:none}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--plum2);margin-bottom:0.85rem}
+.section-label::before{content:'';width:20px;height:2px;background:var(--accent);border-radius:2px}
+.section-title{font-family:var(--font-head);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-0.03em;color:var(--ink);margin-bottom:1rem;line-height:1.1}
+.section-desc{font-size:1rem;color:var(--ink2);max-width:560px;line-height:1.7}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3.5rem}
+.about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem}
+.pill{padding:6px 14px;border-radius:99px;font-size:12px;font-weight:600;background:var(--plum3);color:var(--plum);border:1px solid var(--border2)}
+.about-body{font-size:1rem;color:var(--ink2);line-height:1.8;margin-bottom:1.5rem}
+.about-visual{background:#fff;border-radius:20px;border:1px solid var(--border);padding:2rem;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 32px rgba(92,45,143,0.08)}
+.about-chip{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--off);font-size:13px;font-weight:500;color:var(--ink2);transition:all 0.2s;cursor:default}
+.about-chip:hover{background:var(--plum3);border-color:var(--border2);color:var(--plum)}
+.about-chip-icon{font-size:1.3rem;flex-shrink:0}
+.ventures-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.ventures-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.venture-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);padding:1.5rem;text-decoration:none;color:inherit;transition:all 0.22s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.venture-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(92,45,143,0.04) 100%);opacity:0;transition:opacity 0.22s}
+.venture-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(92,45,143,0.12);border-color:var(--border2)}
+.venture-card:hover::before{opacity:1}
+.vc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.vc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.vc-tag{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);background:var(--off);padding:4px 10px;border-radius:99px;border:1px solid var(--border)}
+.vc-name{font-family:var(--font-head);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:0.4rem;letter-spacing:-0.01em}
+.vc-desc{font-size:13px;color:var(--ink2);line-height:1.6;flex:1;margin-bottom:1.25rem}
+.vc-link{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--plum);letter-spacing:0.01em;text-decoration:none;transition:gap 0.18s}
+.venture-card:hover .vc-link{gap:10px}
+.vc-link svg{width:14px;height:14px;transition:transform 0.18s}
+.venture-card:hover .vc-link svg{transform:translateX(2px)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.service-card{padding:2rem;border-radius:var(--radius);border:1px solid var(--border);background:#fff;transition:all 0.22s}
+.service-card:hover{border-color:var(--plum);box-shadow:0 8px 28px rgba(92,45,143,0.1);transform:translateY(-2px)}
+.service-icon{font-size:2rem;margin-bottom:1rem}
+.service-name{font-family:var(--font-head);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:0.5rem}
+.service-desc{font-size:13px;color:var(--ink2);line-height:1.7}
+.es-strip{background:linear-gradient(135deg,var(--plum) 0%,#3A1A6E 100%);padding:5rem 3rem;text-align:center;color:#fff;position:relative;overflow:hidden}
+.es-strip::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:40px 40px}
+.es-strip h2{font-family:var(--font-head);font-weight:800;font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;margin-bottom:0.75rem;position:relative}
+.es-strip p{font-size:1.05rem;opacity:0.8;max-width:540px;margin:0 auto 2rem;line-height:1.7;position:relative}
+.es-flag-row{display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:2.5rem;position:relative;flex-wrap:wrap}
+.es-flag-badge{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:99px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);font-size:14px;font-weight:600;color:#fff}
+.btn-light{padding:13px 28px;border-radius:99px;background:#fff;color:var(--plum);font-family:var(--font-body);font-size:14px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:8px;position:relative}
+.btn-light:hover{background:var(--plum3);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+.msforms-wrap{border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 8px 32px rgba(92,45,143,0.08);background:#fff}
+.msforms-wrap iframe{display:block;width:100%;border:none}
+.msforms-placeholder{padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--off);min-height:420px}
+.msforms-icon{font-size:2.8rem;margin-bottom:1rem}
+.msforms-placeholder h3{font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:0.5rem;letter-spacing:-0.01em}
+.msforms-placeholder p{font-size:13px;color:var(--ink2);line-height:1.65;max-width:300px;margin-bottom:1.5rem}
+.msforms-placeholder code{display:block;background:#fff;border:1.5px solid var(--border2);border-radius:var(--rad-sm);padding:10px 14px;font-size:12px;color:var(--plum);font-family:'Courier New',monospace;word-break:break-all;text-align:left;width:100%}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-info-card{padding:1.25rem 1.5rem;border-radius:var(--radius);border:1px solid var(--border);background:#fff;display:flex;align-items:flex-start;gap:14px}
+.ci-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.ci-label{font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px}
+.ci-value{font-size:14px;color:var(--ink2);font-weight:500}
+footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-brand-text{font-family:var(--font-head);font-weight:700;font-size:1.05rem;margin-bottom:0.4rem}
+.footer-brand-sub{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1rem}
+.footer-about{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:260px}
+.footer-col-title{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1rem}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;margin-bottom:8px;transition:color 0.18s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;font-size:12px;color:rgba(255,255,255,0.35);flex-wrap:wrap;gap:0.5rem}
+.footer-badges{display:flex;gap:8px}
+.footer-badge{padding:4px 10px;border-radius:99px;border:1px solid rgba(255,255,255,0.12);font-size:11px;color:rgba(255,255,255,0.45)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* ── GEO POPUP ── */
+.geo-overlay{position:fixed;inset:0;z-index:900;background:rgba(13,13,18,0.65);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.32s}
+.geo-overlay.open{opacity:1;pointer-events:all}
+.geo-modal{background:#fff;border-radius:22px;border:1px solid var(--border);width:100%;max-width:480px;padding:2.25rem;transform:scale(0.93) translateY(20px);opacity:0;transition:transform 0.36s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s;box-shadow:0 40px 80px rgba(13,13,18,0.25);position:relative}
+.geo-overlay.open .geo-modal{transform:scale(1) translateY(0);opacity:1}
+.geo-modal-close{position:absolute;top:1.1rem;right:1.1rem;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border2);background:transparent;cursor:pointer;font-size:14px;color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:all 0.18s}
+.geo-modal-close:hover{background:var(--plum3);border-color:var(--plum);color:var(--plum)}
+.geo-flag{font-size:3rem;margin-bottom:1rem;display:block;line-height:1}
+.geo-modal h2{font-family:var(--font-head);font-weight:800;font-size:1.35rem;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.55rem}
+.geo-modal p{font-size:14px;color:var(--ink2);line-height:1.65;margin-bottom:1.75rem}
+.geo-countdown-bar-wrap{height:4px;border-radius:99px;background:rgba(92,45,143,0.1);overflow:hidden;margin-bottom:1.75rem}
+.geo-countdown-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--plum),var(--accent));width:100%;transition:width 1s linear}
+.geo-actions{display:flex;flex-direction:column;gap:10px}
+.geo-btn-stay{padding:13px 20px;border-radius:99px;background:var(--plum);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;border:none;cursor:pointer;transition:all 0.22s;display:flex;align-items:center;justify-content:center;gap:8px}
+.geo-btn-stay:hover{background:var(--plum2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(92,45,143,0.28)}
+.geo-btn-switch{padding:13px 20px;border-radius:99px;background:transparent;color:var(--ink2);border:1.5px solid var(--border2);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.22s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.geo-btn-switch:hover{background:var(--off);border-color:var(--ink3);color:var(--ink)}
+.geo-timer-text{text-align:center;font-size:11.5px;color:var(--ink3);margin-top:12px;font-weight:500}
+#geoSeconds{font-weight:700;color:var(--plum)}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2rem}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .nav-links{display:none}
+  .nav-mobile-btn{display:flex}
+}
+@media(max-width:600px){
+  nav{padding:0 1.25rem}
+  .hero{padding:calc(var(--nav-h)+3rem) 1.25rem 3rem}
+  .section{padding:4rem 1.25rem}
+  .section-full{padding:4rem 1.25rem}
+  .services-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .es-strip{padding:3.5rem 1.25rem}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">✦</div>
+    <div>
+      <div class="nav-logo-text">Magic Plum Company</div>
+      <div class="nav-logo-sub">España</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#sobre-nosotros">Sobre MPC</a>
+    <a href="#proyectos">Nuestros proyectos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+    <span class="nav-es-badge">🇪🇸 Sitio España</span>
+  </div>
+  <button class="nav-mobile-btn" id="mobileToggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre-nosotros" onclick="closeMobile()">Sobre MPC</a>
+  <a href="#proyectos" onclick="closeMobile()">Nuestros proyectos</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HÉROE -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">🇪🇸 Proyectos creativos · Medios · Tecnología</div>
+      <h1>Ideas audaces con<br>un poco de <span class="hl2">magia.</span></h1>
+      <p class="hero-desc">Magic Plum Company España es tu base para proyectos creativos en medios, branding, entretenimiento e innovación tecnológica — directamente desde España.</p>
+      <div class="hero-btns">
+        <a href="#proyectos" class="btn-primary">Explorar proyectos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#contacto" class="btn-secondary">Ponerse en contacto</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal reveal-delay-2">
+      <div class="hero-card">
+        <div class="hero-code" id="typeTarget" aria-hidden="true"></div>
+        <div class="hero-ticker">
+          <span class="ticker-dot"></span>
+          <span id="tickerText">9 proyectos activos en España &amp; el mundo</span>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num" data-count="9">0</div><div class="stat-label">Proyectos</div></div>
+        <div class="stat"><div class="stat-num" data-count="1">0</div><div class="stat-label">País de origen</div></div>
+        <div class="stat"><div class="stat-num" data-count="5">0</div><div class="stat-label">Sectores</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<div class="section-full" id="sobre-nosotros">
+  <div class="section">
+    <div class="section-label">Sobre MPC España</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title reveal">Donde la creatividad se encuentra con la comunidad, el storytelling y la tecnología.</h2>
+        <div class="about-pills reveal reveal-delay-1">
+          <span class="pill">🇪🇸 España</span>
+          <span class="pill">🎨 Creativo</span>
+          <span class="pill">💻 Tecnología</span>
+          <span class="pill">📡 Medios</span>
+          <span class="pill">🎓 Educación</span>
+        </div>
+        <p class="about-body reveal reveal-delay-2">Magic Plum Company España es el hogar español de nuestra estructura creativa internacional. Este sitio es el hub regional dedicado a los visitantes hispanohablantes, ofreciendo acceso a todos los proyectos, servicios y oportunidades de colaboración de MPC.</p>
+        <p class="about-body reveal reveal-delay-3">Desde la producción mediática y el branding digital hasta las soluciones IT y las herramientas educativas, cada proyecto MPC está impulsado por la misma convicción: las grandes ideas, construidas con audacia, cambian las cosas.</p>
+        <a href="#proyectos" class="btn-primary reveal" style="display:inline-flex;margin-top:0.5rem">Ver todos los proyectos</a>
+      </div>
+      <div class="about-visual reveal reveal-delay-1">
+        <div class="about-chip"><span class="about-chip-icon">🎨</span><span>Proyectos creativos con impacto real</span></div>
+        <div class="about-chip"><span class="about-chip-icon">🇪🇸</span><span>Raíces españolas, conexión internacional</span></div>
+        <div class="about-chip"><span class="about-chip-icon">💡</span><span>Innovación en medios &amp; tecnología</span></div>
+        <div class="about-chip"><span class="about-chip-icon">🤝</span><span>Abiertos a colaboraciones &amp; alianzas</span></div>
+        <div class="about-chip"><span class="about-chip-icon">🚀</span><span>Portafolio en constante expansión</span></div>
+        <div class="about-chip"><span class="about-chip-icon">🔐</span><span>Identidad unificada con Plum Identity</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROYECTOS -->
+<section class="section" id="proyectos">
+  <div class="ventures-header">
+    <div>
+      <div class="section-label">Marcas &amp; proyectos</div>
+      <h2 class="section-title reveal">Nuestros proyectos</h2>
+    </div>
+    <p class="section-desc reveal reveal-delay-1" style="max-width:360px;font-size:13.5px">Cada proyecto es una marca independiente bajo el paraguas de Magic Plum — conectada, pero con identidad propia.</p>
+  </div>
+  <div class="ventures-grid" id="venturesGrid"></div>
+</section>
+
+<!-- SERVICIOS -->
+<div class="section-full" id="servicios">
+  <div class="section">
+    <div class="section-label">Lo que ofrecemos</div>
+    <h2 class="section-title reveal">Servicios &amp; capacidades</h2>
+    <p class="section-desc reveal reveal-delay-1">El conjunto de proyectos MPC ofrece una amplia gama de servicios para particulares, creadores y organizaciones en España y a nivel internacional.</p>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</div>
+
+<!-- ES STRIP -->
+<div class="es-strip">
+  <h2>🇪🇸 Magic Plum — Hecho en España</h2>
+  <p>Estás en el sitio oficial español de Magic Plum Company. Para acceder a nuestro hub internacional, visita magicplum.js.org.</p>
+  <div class="es-flag-row">
+    <span class="es-flag-badge">🇪🇸 magicplum.qzz.io/es</span>
+    <span class="es-flag-badge">🌐 magicplum.qzz.io</span>
+    <span class="es-flag-badge">🌍 magicplum.eu.org</span>
+  </div>
+  <a href="https://magicplum.js.org" class="btn-light">Ir al sitio internacional ↗</a>
+</div>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+  <div class="section-label">Contacto</div>
+  <h2 class="section-title reveal">Construyamos algo juntos</h2>
+  <p class="section-desc reveal reveal-delay-1">¿Te interesa una colaboración, un proyecto de medios, tecnología o una alianza? Ponte en contacto con Magic Plum Company España.</p>
+  <div class="contact-grid">
+    <div class="msforms-wrap reveal">
+      <!-- ┌─────────────────────────────────────────────────────────┐
+           │  INTEGRACIÓN DE MICROSOFT FORMS                         │
+           │  1. Ve a forms.office.com y abre tu formulario         │
+           │  2. Haz clic en Compartir → Insertar                    │
+           │  3. Copia la URL src del iframe que te facilitan       │
+           │  4. Sustituye YOUR_FORM_EMBED_URL por esa URL          │
+           │  5. Elimina el bloque .msforms-placeholder              │
+           └─────────────────────────────────────────────────────────┘ -->
+
+      <iframe
+        src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAaftu8NUQ0NENldUMDhWVVA2VjhNRTNNQUZFWVNMVi4u"
+        width="100%"
+        height="600"
+        frameborder="0"
+        marginwidth="0"
+        marginheight="0"
+        style="border:none;max-width:100%"
+        allowfullscreen
+        webkitallowfullscreen
+        mozallowfullscreen
+        msallowfullscreen>
+      </iframe>
+    </div>
+    <div class="contact-info reveal reveal-delay-2">
+      <div class="contact-info-card"><span class="ci-icon">🇪🇸</span><div><div class="ci-label">Sitio España</div><div class="ci-value">magicplum.es</div></div></div>
+      <div class="contact-info-card"><span class="ci-icon">🌐</span><div><div class="ci-label">Hub internacional</div><div class="ci-value">magicplum.js.org</div></div></div>
+      <div class="contact-info-card"><span class="ci-icon">🌍</span><div><div class="ci-label">Sitio europeo</div><div class="ci-value">magicplum.eu.org</div></div></div>
+      <div class="contact-info-card"><span class="ci-icon">📡</span><div><div class="ci-label">Proyectos</div><div class="ci-value">9 marcas &amp; proyectos activos</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-text">✦ Magic Plum Company</div>
+        <div class="footer-brand-sub">España</div>
+        <p class="footer-about">Proyectos creativos, medios &amp; tecnología. Ideas españolas audaces con un toque de magia.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Proyectos</div>
+        <a href="#">Femboy Media Corp</a>
+        <a href="#">Prism Media Group</a>
+        <a href="#">MagicByte ICT</a>
+        <a href="#">United Broadcasting</a>
+        <a href="#">Plum Academy</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Más marcas</div>
+        <a href="#">Anarchy Group</a>
+        <a href="#">Revit Helpdesk</a>
+        <a href="#">UK Television Clips</a>
+        <a href="#">Plum Identity</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Empresa</div>
+        <a href="#sobre-nosotros">Sobre MPC ES</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+        <a href="https://magicplum.qzz.io">Sitio internacional</a>
+        <a href="https://magicplum.eu.org">Sitio europeo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Magic Plum Company España. Todos los derechos reservados.</span>
+      <div class="footer-badges">
+        <span class="footer-badge">🇪🇸 España</span>
+        <span class="footer-badge">JS Powered</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── POPUP GEOLOCALIZACIÓN ── -->
+<div class="geo-overlay" id="geoOverlay" role="dialog" aria-modal="true" aria-label="Aviso de región">
+  <div class="geo-modal" id="geoModal">
+    <button class="geo-modal-close" id="geoClose" aria-label="Cerrar">✕</button>
+    <span class="geo-flag">🌍</span>
+    <h2>Parece que no estás en España</h2>
+    <p>Estás visitando el sitio de <strong>Magic Plum Company España</strong>. Para una mejor experiencia, te recomendamos nuestro hub internacional en <strong>magicplum.js.org</strong>.</p>
+    <div class="geo-countdown-bar-wrap">
+      <div class="geo-countdown-bar" id="geoBar"></div>
+    </div>
+    <div class="geo-actions">
+      <button class="geo-btn-stay" id="geoBtnStay">
+        🇪🇸 Quedarse en el sitio de España
+      </button>
+      <a href="https://magicplum.qzz.io" class="geo-btn-switch" id="geoBtnSwitch">
+        🌐 Ir al sitio internacional
+      </a>
+    </div>
+    <p class="geo-timer-text">Redirigiendo al sitio internacional en <span id="geoSeconds">10</span> seg — o elige arriba</p>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  DATOS
+// ═══════════════════════════════════════════════════════════
+const VENTURES = [
+  { name:'Femboy Media Corporation',    icon:'🌈', iconBg:'#FFF0F5', tag:'Entretenimiento',     desc:'Entretenimiento moderno, cultura creadora y medios digitales expresivos para comunidades diversas.', url:'#' },
+  { name:'Prism Media Group',           icon:'💎', iconBg:'#EFF6FF', tag:'Branding & Medios',   desc:'Branding, visuales, campañas y storytelling colorido que destaca entre el ruido.', url:'#' },
+  { name:'MagicByte ICT',               icon:'💻', iconBg:'#F0FDF4', tag:'Tecnología',           desc:'Soporte técnico, soluciones web, sistemas y servicios IT integrales para empresas.', url:'#' },
+  { name:'United Broadcasting Company', icon:'📡', iconBg:'#F0F9FF', tag:'Radiodifusión',        desc:'Radiodifusión, radio, streaming y experiencias de medios en vivo entregadas globalmente.', url:'#' },
+  { name:'Plum Academy',                icon:'📚', iconBg:'#FEFCE8', tag:'Educación',            desc:'Apoyo escolar, herramientas de repaso y recursos educativos para estudiantes de todos los niveles.', url:'#' },
+  { name:'Anarchy Group',               icon:'🔥', iconBg:'#FFF7ED', tag:'Creativo',             desc:'Medios, caos, disrupción y creatividad sin forma — ideas audaces sin fronteras.', url:'#' },
+  { name:'Revit Helpdesk',              icon:'📐', iconBg:'#F5F3FF', tag:'Soporte técnico',      desc:'CAD, Revit, Autodesk y soporte técnico para arquitectos, ingenieros y diseñadores.', url:'#' },
+  { name:'UK Television Clips',         icon:'📺', iconBg:'#FFF1F2', tag:'Archivos & Medios',    desc:'Archivos de televisión británica, clips memorables, historia de la radiodifusión y momentos de entretenimiento.', url:'#' },
+  { name:'Plum Identity',               icon:'🪪', iconBg:'#F0F9FF', tag:'Plataforma',           desc:'Una plataforma de inicio de sesión único e identidad unificada para todo el ecosistema Magic Plum.', url:'#' },
+];
+
+const SERVICES = [
+  { icon:'🎨', name:'Creativo & Branding',    desc:'Identidad visual, campañas y diseño de medios expresivo de Prism Media Group y la familia creativa MPC.' },
+  { icon:'💻', name:'Tecnología & IT',         desc:'Desarrollo web, sistemas, soporte técnico e infraestructura digital a través de MagicByte ICT.' },
+  { icon:'📡', name:'Medios & Radiodifusión',  desc:'Radio, streaming, medios en vivo y servicios de difusión a través de United Broadcasting Company.' },
+  { icon:'🎓', name:'Educación & Aprendizaje', desc:'Repaso escolar, apoyo al aprendizaje y contenido educativo mediante Plum Academy.' },
+  { icon:'🔐', name:'Identidad & Plataformas', desc:'Autenticación unificada e identidad de plataforma en todos los proyectos mediante Plum Identity.' },
+  { icon:'🤝', name:'Alianzas',                desc:'Colaboraciones estratégicas, proyectos transversales y alianzas creativas internacionales.' },
+];
+
+// ═══════════════════════════════════════════════════════════
+//  RENDERIZADO
+// ═══════════════════════════════════════════════════════════
+document.getElementById('venturesGrid').innerHTML = VENTURES.map(v => `
+  <a class="venture-card reveal" href="${v.url}">
+    <div class="vc-top">
+      <div class="vc-icon" style="background:${v.iconBg}">${v.icon}</div>
+      <span class="vc-tag">${v.tag}</span>
+    </div>
+    <div class="vc-name">${v.name}</div>
+    <div class="vc-desc">${v.desc}</div>
+    <span class="vc-link">Visitar sitio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  </a>`).join('');
+
+document.getElementById('servicesGrid').innerHTML = SERVICES.map((s,i) => `
+  <div class="service-card reveal reveal-delay-${(i%3)+1}">
+    <div class="service-icon">${s.icon}</div>
+    <div class="service-name">${s.name}</div>
+    <div class="service-desc">${s.desc}</div>
+  </div>`).join('');
+
+// ═══════════════════════════════════════════════════════════
+//  GEO POPUP
+// ═══════════════════════════════════════════════════════════
+const INTL_URL = 'https://magicplum.js.org';
+const COUNTDOWN = 10;
+let geoTimer = null;
+let geoSecondsLeft = COUNTDOWN;
+let geoDismissed = false;
+
+function stopGeoTimer() {
+  if (geoTimer) { clearInterval(geoTimer); geoTimer = null; }
+}
+function dismissGeo() {
+  if (geoDismissed) return;
+  geoDismissed = true;
+  stopGeoTimer();
+  const overlay = document.getElementById('geoOverlay');
+  overlay.classList.remove('open');
+  overlay.addEventListener('transitionend', () => { overlay.style.display = 'none'; }, { once: true });
+}
+function openGeoPopup() {
+  const overlay = document.getElementById('geoOverlay');
+  const bar     = document.getElementById('geoBar');
+  const secEl   = document.getElementById('geoSeconds');
+  overlay.style.display = 'flex';
+  overlay.getBoundingClientRect();
+  overlay.classList.add('open');
+  bar.style.transition = 'none';
+  bar.style.width = '100%';
+  bar.getBoundingClientRect();
+  bar.style.transition = `width ${COUNTDOWN}s linear`;
+  bar.style.width = '0%';
+  geoSecondsLeft = COUNTDOWN;
+  secEl.textContent = geoSecondsLeft;
+  geoTimer = setInterval(() => {
+    geoSecondsLeft--;
+    secEl.textContent = geoSecondsLeft;
+    if (geoSecondsLeft <= 0) { stopGeoTimer(); window.location.href = INTL_URL; }
+  }, 1000);
+}
+
+document.getElementById('geoBtnStay').addEventListener('click', dismissGeo);
+document.getElementById('geoBtnSwitch').addEventListener('click', () => { stopGeoTimer(); });
+document.getElementById('geoClose').addEventListener('click', () => {
+  stopGeoTimer();
+  if (geoDismissed) return;
+  geoDismissed = true;
+  document.getElementById('geoOverlay').classList.remove('open');
+  setTimeout(() => { window.location.href = INTL_URL; }, 320);
+});
+document.getElementById('geoOverlay').addEventListener('click', function(e) {
+  if (e.target === this) dismissGeo();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') dismissGeo(); });
+
+async function checkGeo() {
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data && data.country_code && data.country_code !== 'ES') {
+      openGeoPopup();
+    }
+  } catch { /* Error de red — sin popup */ }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  SCROLL REVEAL
+// ═══════════════════════════════════════════════════════════
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+function initReveal() {
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+// ═══════════════════════════════════════════════════════════
+//  NAV
+// ═══════════════════════════════════════════════════════════
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ═══════════════════════════════════════════════════════════
+//  MENÚ MÓVIL
+// ═══════════════════════════════════════════════════════════
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu   = document.getElementById('mobileMenu');
+let menuOpen = false;
+mobileToggle.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('open', menuOpen);
+  const spans = mobileToggle.querySelectorAll('span');
+  if (menuOpen) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+    spans[1].style.opacity   = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+  } else {
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+});
+function closeMobile() {
+  menuOpen = false;
+  mobileMenu.classList.remove('open');
+  mobileToggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  CURSOR
+// ═══════════════════════════════════════════════════════════
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+}, { passive: true });
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// ═══════════════════════════════════════════════════════════
+//  MÁQUINA DE ESCRIBIR
+// ═══════════════════════════════════════════════════════════
+const CODE_LINES = [
+  '<span class="cm">// Magic Plum Company España</span>',
+  '<span class="kw">const</span> mpc = {',
+  '  nombre:    <span class="str">"Magic Plum Company"</span>,',
+  '  region:    <span class="str">"España"</span>,',
+  '  proyectos: <span class="num">9</span>,',
+  '  home:      <span class="str">"magicplum.es"</span>,',
+  '  mision:    <span class="str">"Crear ideas audaces"</span>,',
+  '};',
+  '',
+  '<span class="fn">lanzar</span>(mpc.proyectos);',
+];
+
+(function typewriter() {
+  const el = document.getElementById('typeTarget');
+  let lineIdx = 0, charIdx = 0;
+  function renderLineUpTo(li, ci) {
+    let visible = 0, result = '', inTag = false;
+    const src = CODE_LINES[li];
+    for (let i = 0; i < src.length; i++) {
+      const c = src[i];
+      if (c === '<') { inTag = true;  result += c; continue; }
+      if (c === '>') { inTag = false; result += c; continue; }
+      if (inTag)     { result += c; continue; }
+      if (visible < ci) { result += c; visible++; } else break;
+    }
+    return result + '<span style="border-right:2px solid var(--accent)">&nbsp;</span>';
+  }
+  function tick() {
+    if (lineIdx >= CODE_LINES.length) return;
+    const stripped = CODE_LINES[lineIdx].replace(/<[^>]+>/g, '');
+    if (charIdx <= stripped.length) {
+      el.innerHTML = CODE_LINES.slice(0, lineIdx).join('<br>') + (lineIdx > 0 ? '<br>' : '') + renderLineUpTo(lineIdx, charIdx);
+      charIdx++;
+      setTimeout(tick, charIdx === 1 ? 100 : 28);
+    } else {
+      lineIdx++; charIdx = 0;
+      setTimeout(tick, 160);
+    }
+  }
+  tick();
+})();
+
+// ═══════════════════════════════════════════════════════════
+//  CONTADORES
+// ═══════════════════════════════════════════════════════════
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    let current = 0;
+    const step = () => { current = Math.min(current + 1, target); el.textContent = current; if (current < target) setTimeout(step, 120); };
+    setTimeout(step, 800);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  TICKER
+// ═══════════════════════════════════════════════════════════
+const TICKERS = [
+  '9 proyectos activos en España & el mundo',
+  'Raíces españolas, alcance internacional',
+  'Creativo · Medios · Tecnología · Educación',
+  'magicplum.es — Tu espacio en España'
+];
+let tickerIdx = 0;
+const tickerEl = document.getElementById('tickerText');
+tickerEl.style.transition = 'opacity 0.25s';
+setInterval(() => {
+  tickerIdx = (tickerIdx + 1) % TICKERS.length;
+  tickerEl.style.opacity = '0';
+  setTimeout(() => { tickerEl.textContent = TICKERS[tickerIdx]; tickerEl.style.opacity = '1'; }, 250);
+}, 3000);
+
+// ═══════════════════════════════════════════════════════════
+//  INICIALIZACIÓN
+// ═══════════════════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', () => {
+  initReveal();
+  animateCounters();
+  setTimeout(checkGeo, 800);
+});
+</script>
+</body>
+</html>
