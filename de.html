@@ -136,11 +136,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(92,45,143,0.09)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
 .msforms-wrap{border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 8px 32px rgba(92,45,143,0.08);background:#fff}
 .msforms-wrap iframe{display:block;width:100%;border:none}
-.msforms-placeholder{padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--off);min-height:420px}
-.msforms-icon{font-size:2.8rem;margin-bottom:1rem}
-.msforms-placeholder h3{font-family:var(--font-head);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:0.5rem;letter-spacing:-0.01em}
-.msforms-placeholder p{font-size:13px;color:var(--ink2);line-height:1.65;max-width:300px;margin-bottom:1.5rem}
-.msforms-placeholder code{display:block;background:#fff;border:1.5px solid var(--border2);border-radius:var(--rad-sm);padding:10px 14px;font-size:12px;color:var(--plum);font-family:'Courier New',monospace;word-break:break-all;text-align:left;width:100%}
+.msforms-placeholder-inner{display:flex;align-items:center;justify-content:center;height:600px;background:var(--off);color:var(--ink3);font-size:13px;font-weight:500;gap:8px}
 .contact-info{display:flex;flex-direction:column;gap:16px}
 .contact-info-card{padding:1.25rem 1.5rem;border-radius:var(--radius);border:1px solid var(--border);background:#fff;display:flex;align-items:flex-start;gap:14px}
 .ci-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
@@ -165,83 +161,23 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
 .reveal-delay-3{transition-delay:0.3s}
 
 /* ── GEO REDIRECT POPUP ── */
-.geo-overlay{
-  position:fixed;inset:0;z-index:900;
-  background:rgba(13,13,18,0.65);
-  backdrop-filter:blur(10px);
-  display:flex;align-items:center;justify-content:center;
-  padding:1rem;
-  opacity:0;pointer-events:none;
-  transition:opacity 0.32s;
-}
+.geo-overlay{position:fixed;inset:0;z-index:900;background:rgba(13,13,18,0.65);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.32s}
 .geo-overlay.open{opacity:1;pointer-events:all}
-.geo-modal{
-  background:#fff;
-  border-radius:22px;
-  border:1px solid var(--border);
-  width:100%;max-width:480px;
-  padding:2.25rem;
-  transform:scale(0.93) translateY(20px);
-  opacity:0;
-  transition:transform 0.36s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s;
-  box-shadow:0 40px 80px rgba(13,13,18,0.25);
-  position:relative;
-}
+.geo-modal{background:#fff;border-radius:22px;border:1px solid var(--border);width:100%;max-width:480px;padding:2.25rem;transform:scale(0.93) translateY(20px);opacity:0;transition:transform 0.36s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s;box-shadow:0 40px 80px rgba(13,13,18,0.25);position:relative}
 .geo-overlay.open .geo-modal{transform:scale(1) translateY(0);opacity:1}
-.geo-modal-close{
-  position:absolute;top:1.1rem;right:1.1rem;
-  width:30px;height:30px;border-radius:50%;
-  border:1.5px solid var(--border2);background:transparent;
-  cursor:pointer;font-size:14px;color:var(--ink2);
-  display:flex;align-items:center;justify-content:center;
-  transition:all 0.18s;
-}
+.geo-modal-close{position:absolute;top:1.1rem;right:1.1rem;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border2);background:transparent;cursor:pointer;font-size:14px;color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:all 0.18s}
 .geo-modal-close:hover{background:var(--plum3);border-color:var(--plum);color:var(--plum)}
 .geo-flag{font-size:3rem;margin-bottom:1rem;display:block;line-height:1}
-.geo-modal h2{
-  font-family:var(--font-head);font-weight:800;
-  font-size:1.35rem;letter-spacing:-0.02em;
-  color:var(--ink);margin-bottom:0.55rem;
-}
+.geo-modal h2{font-family:var(--font-head);font-weight:800;font-size:1.35rem;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.55rem}
 .geo-modal p{font-size:14px;color:var(--ink2);line-height:1.65;margin-bottom:1.75rem}
-.geo-countdown-bar-wrap{
-  height:4px;border-radius:99px;
-  background:rgba(92,45,143,0.1);
-  overflow:hidden;margin-bottom:1.75rem;
-}
-.geo-countdown-bar{
-  height:100%;border-radius:99px;
-  background:linear-gradient(90deg,var(--plum),var(--accent));
-  width:100%;
-  transition:width 1s linear;
-}
+.geo-countdown-bar-wrap{height:4px;border-radius:99px;background:rgba(92,45,143,0.1);overflow:hidden;margin-bottom:1.75rem}
+.geo-countdown-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--plum),var(--accent));width:100%;transition:width 1s linear}
 .geo-actions{display:flex;flex-direction:column;gap:10px}
-.geo-btn-stay{
-  padding:13px 20px;border-radius:99px;
-  background:var(--plum);color:#fff;
-  font-family:var(--font-body);font-size:14px;font-weight:600;
-  border:none;cursor:pointer;
-  transition:all 0.22s;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-}
+.geo-btn-stay{padding:13px 20px;border-radius:99px;background:var(--plum);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;border:none;cursor:pointer;transition:all 0.22s;display:flex;align-items:center;justify-content:center;gap:8px}
 .geo-btn-stay:hover{background:var(--plum2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(92,45,143,0.28)}
-.geo-btn-switch{
-  padding:13px 20px;border-radius:99px;
-  background:transparent;color:var(--ink2);
-  border:1.5px solid var(--border2);
-  font-family:var(--font-body);font-size:14px;font-weight:600;
-  cursor:pointer;
-  transition:all 0.22s;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  text-decoration:none;
-}
+.geo-btn-switch{padding:13px 20px;border-radius:99px;background:transparent;color:var(--ink2);border:1.5px solid var(--border2);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.22s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
 .geo-btn-switch:hover{background:var(--off);border-color:var(--ink3);color:var(--ink)}
-.geo-timer-text{
-  text-align:center;
-  font-size:11.5px;color:var(--ink3);
-  margin-top:12px;
-  font-weight:500;
-}
+.geo-timer-text{text-align:center;font-size:11.5px;color:var(--ink3);margin-top:12px;font-weight:500}
 #geoSeconds{font-weight:700;color:var(--plum)}
 
 @media(max-width:900px){
@@ -295,7 +231,6 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
   <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -326,7 +261,6 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
   </div>
 </section>
 
-<!-- ÜBER UNS -->
 <div class="section-full" id="ueber-uns">
   <div class="section">
     <div class="section-label">Über MPC Deutschland</div>
@@ -356,7 +290,6 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
   </div>
 </div>
 
-<!-- PROJEKTE -->
 <section class="section" id="projekte">
   <div class="ventures-header">
     <div>
@@ -368,7 +301,6 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
   <div class="ventures-grid" id="venturesGrid"></div>
 </section>
 
-<!-- LEISTUNGEN -->
 <div class="section-full" id="leistungen">
   <div class="section">
     <div class="section-label">Was wir anbieten</div>
@@ -378,7 +310,6 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
   </div>
 </div>
 
-<!-- DE STRIP -->
 <div class="de-strip">
   <h2>🇩🇪 Magic Plum — Made in Germany</h2>
   <p>Du befindest dich auf der offiziellen deutschen Website von Magic Plum Company. Das internationale Hub erreichst du unter magicplum.js.org.</p>
@@ -390,36 +321,15 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
   <a href="https://magicplum.js.org" class="btn-light">Zur internationalen Website ↗</a>
 </div>
 
-<!-- KONTAKT -->
 <section class="section" id="kontakt">
   <div class="section-label">Kontakt</div>
   <h2 class="section-title reveal">Lass uns etwas aufbauen</h2>
   <p class="section-desc reveal reveal-delay-1">Interesse an einer Zusammenarbeit, Medienprojekten, Technologieprojekten oder Partnerschaften? Schreib Magic Plum Company Deutschland an.</p>
   <div class="contact-grid">
     <div class="msforms-wrap reveal">
-      <!-- ┌─────────────────────────────────────────────────────────┐
-           │  MICROSOFT FORMS EINBETTEN                              │
-           │  1. Gehe zu forms.office.com und öffne dein Formular   │
-           │  2. Klicke auf Teilen → Einbetten                       │
-           │  3. Kopiere die src-URL des <iframe>-Codes              │
-           │  4. Ersetze unten YOUR_FORM_EMBED_URL mit dieser URL    │
-           │  5. Lösche den .msforms-placeholder-Bereich             │
-           └─────────────────────────────────────────────────────────┘ -->
-
-      <iframe
-        src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAaftu8NUQ0NENldUMDhWVVA2VjhNRTNNQUZFWVNMVi4u"
-        width="100%"
-        height="600"
-        frameborder="0"
-        marginwidth="0"
-        marginheight="0"
-        style="border:none;max-width:100%"
-        allowfullscreen
-        webkitallowfullscreen
-        mozallowfullscreen
-        msallowfullscreen>
-      </iframe>
-
+      <div class="msforms-placeholder-inner" id="msformsPlaceholder">
+        <span>⏳</span> Formular wird geladen…
+      </div>
     </div>
     <div class="contact-info reveal reveal-delay-2">
       <div class="contact-info-card"><span class="ci-icon">🇩🇪</span><div><div class="ci-label">Deutsche Website</div><div class="ci-value">magicplum.de</div></div></div>
@@ -472,7 +382,7 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
   </div>
 </footer>
 
-<!-- ── GEO REDIRECT POPUP ── -->
+<!-- GEO REDIRECT POPUP -->
 <div class="geo-overlay" id="geoOverlay" role="dialog" aria-modal="true" aria-label="Regionshinweis">
   <div class="geo-modal" id="geoModal">
     <button class="geo-modal-close" id="geoClose" aria-label="Schließen">✕</button>
@@ -483,18 +393,45 @@ footer{background:var(--ink);color:#fff;padding:4rem 3rem 2rem}
       <div class="geo-countdown-bar" id="geoBar"></div>
     </div>
     <div class="geo-actions">
-      <button class="geo-btn-stay" id="geoBtnStay">
-        🇩🇪 Auf der deutschen Website bleiben
-      </button>
-      <a href="https://www.magicplum.qzz.io" class="geo-btn-switch" id="geoBtnSwitch">
-        🌐 Zur internationalen Website wechseln
-      </a>
+      <button class="geo-btn-stay" id="geoBtnStay">🇩🇪 Auf der deutschen Website bleiben</button>
+      <a href="https://www.magicplum.qzz.io" class="geo-btn-switch" id="geoBtnSwitch">🌐 Zur internationalen Website wechseln</a>
     </div>
     <p class="geo-timer-text">Weiterleitung zur internationalen Website in <span id="geoSeconds">10</span> Sek. — oder oben auswählen</p>
   </div>
 </div>
 
 <script>
+// ═══════════════════════════════════════════════════════════
+//  FIX: Lazy-load MS Forms iframe — prevents scroll-jump on page load
+// ═══════════════════════════════════════════════════════════
+(function() {
+  var placeholder = document.getElementById('msformsPlaceholder');
+  var wrap = placeholder && placeholder.parentElement;
+  var loaded = false;
+
+  function loadIframe() {
+    if (loaded || !wrap) return;
+    loaded = true;
+    if (placeholder) placeholder.remove();
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAaftu8NUQ0NENldUMDhWVVA2VjhNRTNNQUZFWVNMVi4u';
+    iframe.width = '100%';
+    iframe.height = '600';
+    iframe.frameBorder = '0';
+    iframe.style.cssText = 'border:none;max-width:100%;display:block';
+    wrap.appendChild(iframe);
+  }
+
+  if ('IntersectionObserver' in window && placeholder) {
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { loadIframe(); observer.disconnect(); }
+    }, { rootMargin: '200px' });
+    observer.observe(placeholder);
+  } else {
+    setTimeout(loadIframe, 2000);
+  }
+})();
+
 // ═══════════════════════════════════════════════════════════
 //  DATEN
 // ═══════════════════════════════════════════════════════════
@@ -511,12 +448,12 @@ const VENTURES = [
 ];
 
 const SERVICES = [
-  { icon:'🎨', name:'Kreativ & Branding',    desc:'Visuelle Identität, Kampagnen und ausdrucksstarkes Mediendesign von Prism Media Group und der gesamten MPC-Kreativfamilie.' },
-  { icon:'💻', name:'Technologie & IT',      desc:'Webentwicklung, Systembetreuung, Tech-Support und digitale Infrastruktur durch MagicByte ICT.' },
-  { icon:'📡', name:'Medien & Broadcasting', desc:'Radio, Streaming, Live-Medien und Broadcasting-Dienste über United Broadcasting Company.' },
-  { icon:'🎓', name:'Bildung & Lernen',      desc:'Schulwiederholung, Lernunterstützung und Bildungsinhalte über Plum Academy.' },
-  { icon:'🔐', name:'Identität & Plattformen', desc:'Einheitliche Authentifizierung und Plattformidentität über alle Projekte hinweg durch Plum Identity.' },
-  { icon:'🤝', name:'Partnerschaften',       desc:'Strategische Zusammenarbeit, projektübergreifende Vorhaben und internationale Kreativpartnerschaften.' },
+  { icon:'🎨', name:'Kreativ & Branding',      desc:'Visuelle Identität, Kampagnen und ausdrucksstarkes Mediendesign von Prism Media Group und der gesamten MPC-Kreativfamilie.' },
+  { icon:'💻', name:'Technologie & IT',         desc:'Webentwicklung, Systembetreuung, Tech-Support und digitale Infrastruktur durch MagicByte ICT.' },
+  { icon:'📡', name:'Medien & Broadcasting',    desc:'Radio, Streaming, Live-Medien und Broadcasting-Dienste über United Broadcasting Company.' },
+  { icon:'🎓', name:'Bildung & Lernen',         desc:'Schulwiederholung, Lernunterstützung und Bildungsinhalte über Plum Academy.' },
+  { icon:'🔐', name:'Identität & Plattformen',  desc:'Einheitliche Authentifizierung und Plattformidentität über alle Projekte hinweg durch Plum Identity.' },
+  { icon:'🤝', name:'Partnerschaften',          desc:'Strategische Zusammenarbeit, projektübergreifende Vorhaben und internationale Kreativpartnerschaften.' },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -545,19 +482,13 @@ document.getElementById('servicesGrid').innerHTML = SERVICES.map((s,i) => `
 // ═══════════════════════════════════════════════════════════
 const INTL_URL = 'https://www.magicplum.qzz.io';
 const COUNTDOWN = 10;
+let geoTimer = null, geoSecondsLeft = COUNTDOWN, geoDismissed = false;
 
-let geoTimer = null;
-let geoSecondsLeft = COUNTDOWN;
-let geoDismissed = false;
-
-function stopGeoTimer() {
-  if (geoTimer) { clearInterval(geoTimer); geoTimer = null; }
-}
+function stopGeoTimer() { if (geoTimer) { clearInterval(geoTimer); geoTimer = null; } }
 
 function dismissGeo() {
   if (geoDismissed) return;
-  geoDismissed = true;
-  stopGeoTimer();
+  geoDismissed = true; stopGeoTimer();
   const overlay = document.getElementById('geoOverlay');
   overlay.classList.remove('open');
   overlay.addEventListener('transitionend', () => { overlay.style.display = 'none'; }, { once: true });
@@ -565,78 +496,45 @@ function dismissGeo() {
 
 function openGeoPopup() {
   const overlay = document.getElementById('geoOverlay');
-  const bar     = document.getElementById('geoBar');
-  const secEl   = document.getElementById('geoSeconds');
-
-  overlay.style.display = 'flex';
-  overlay.getBoundingClientRect();
-  overlay.classList.add('open');
-
-  bar.style.transition = 'none';
-  bar.style.width = '100%';
-  bar.getBoundingClientRect();
-  bar.style.transition = `width ${COUNTDOWN}s linear`;
-  bar.style.width = '0%';
-
-  geoSecondsLeft = COUNTDOWN;
-  secEl.textContent = geoSecondsLeft;
-
+  const bar = document.getElementById('geoBar');
+  const secEl = document.getElementById('geoSeconds');
+  overlay.style.display = 'flex'; overlay.getBoundingClientRect(); overlay.classList.add('open');
+  bar.style.transition = 'none'; bar.style.width = '100%'; bar.getBoundingClientRect();
+  bar.style.transition = `width ${COUNTDOWN}s linear`; bar.style.width = '0%';
+  geoSecondsLeft = COUNTDOWN; secEl.textContent = geoSecondsLeft;
   geoTimer = setInterval(() => {
-    geoSecondsLeft--;
-    secEl.textContent = geoSecondsLeft;
-    if (geoSecondsLeft <= 0) {
-      stopGeoTimer();
-      window.location.href = INTL_URL;
-    }
+    geoSecondsLeft--; secEl.textContent = geoSecondsLeft;
+    if (geoSecondsLeft <= 0) { stopGeoTimer(); window.location.href = INTL_URL; }
   }, 1000);
 }
 
 document.getElementById('geoBtnStay').addEventListener('click', dismissGeo);
-
-document.getElementById('geoBtnSwitch').addEventListener('click', () => {
-  stopGeoTimer();
-});
-
+document.getElementById('geoBtnSwitch').addEventListener('click', () => { stopGeoTimer(); });
 document.getElementById('geoClose').addEventListener('click', () => {
-  stopGeoTimer();
-  if (geoDismissed) return;
-  geoDismissed = true;
+  stopGeoTimer(); if (geoDismissed) return; geoDismissed = true;
   document.getElementById('geoOverlay').classList.remove('open');
   setTimeout(() => { window.location.href = INTL_URL; }, 320);
 });
-
-document.getElementById('geoOverlay').addEventListener('click', function(e) {
-  if (e.target === this) dismissGeo();
-});
-
+document.getElementById('geoOverlay').addEventListener('click', function(e) { if (e.target === this) dismissGeo(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') dismissGeo(); });
 
-// ── GEO DETECTION ──────────────────────────────────────────
 async function checkGeo() {
   try {
     const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
     if (!res.ok) return;
     const data = await res.json();
-    if (data && data.country_code && data.country_code !== 'DE') {
-      openGeoPopup();
-    }
-  } catch {
-    // Netzwerkfehler — kein Popup anzeigen
-  }
+    if (data && data.country_code && data.country_code !== 'DE') openGeoPopup();
+  } catch {}
 }
 
 // ═══════════════════════════════════════════════════════════
 //  SCROLL REVEAL
 // ═══════════════════════════════════════════════════════════
 const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
 }, { threshold: 0.08 });
 
-function initReveal() {
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-}
+function initReveal() { document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el)); }
 
 // ═══════════════════════════════════════════════════════════
 //  NAV
@@ -649,25 +547,21 @@ window.addEventListener('scroll', () => {
 //  MOBILE MENU
 // ═══════════════════════════════════════════════════════════
 const mobileToggle = document.getElementById('mobileToggle');
-const mobileMenu   = document.getElementById('mobileMenu');
+const mobileMenu = document.getElementById('mobileMenu');
 let menuOpen = false;
 
 mobileToggle.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  mobileMenu.classList.toggle('open', menuOpen);
+  menuOpen = !menuOpen; mobileMenu.classList.toggle('open', menuOpen);
   const spans = mobileToggle.querySelectorAll('span');
   if (menuOpen) {
     spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
-    spans[1].style.opacity   = '0';
+    spans[1].style.opacity = '0';
     spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
-  } else {
-    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-  }
+  } else { spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; }); }
 });
 
 function closeMobile() {
-  menuOpen = false;
-  mobileMenu.classList.remove('open');
+  menuOpen = false; mobileMenu.classList.remove('open');
   mobileToggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
 }
 
@@ -675,10 +569,7 @@ function closeMobile() {
 //  CURSOR
 // ═══════════════════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top  = e.clientY + 'px';
-}, { passive: true });
+document.addEventListener('mousemove', e => { cursor.style.left = e.clientX+'px'; cursor.style.top = e.clientY+'px'; }, { passive: true });
 document.querySelectorAll('a,button').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('big'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
@@ -703,31 +594,25 @@ const CODE_LINES = [
 (function typewriter() {
   const el = document.getElementById('typeTarget');
   let lineIdx = 0, charIdx = 0;
-
   function renderLineUpTo(li, ci) {
     let visible = 0, result = '', inTag = false;
     const src = CODE_LINES[li];
     for (let i = 0; i < src.length; i++) {
       const c = src[i];
-      if (c === '<') { inTag = true;  result += c; continue; }
+      if (c === '<') { inTag = true; result += c; continue; }
       if (c === '>') { inTag = false; result += c; continue; }
-      if (inTag)     { result += c; continue; }
+      if (inTag) { result += c; continue; }
       if (visible < ci) { result += c; visible++; } else break;
     }
     return result + '<span style="border-right:2px solid var(--accent)">&nbsp;</span>';
   }
-
   function tick() {
     if (lineIdx >= CODE_LINES.length) return;
     const stripped = CODE_LINES[lineIdx].replace(/<[^>]+>/g, '');
     if (charIdx <= stripped.length) {
       el.innerHTML = CODE_LINES.slice(0, lineIdx).join('<br>') + (lineIdx > 0 ? '<br>' : '') + renderLineUpTo(lineIdx, charIdx);
-      charIdx++;
-      setTimeout(tick, charIdx === 1 ? 100 : 28);
-    } else {
-      lineIdx++; charIdx = 0;
-      setTimeout(tick, 160);
-    }
+      charIdx++; setTimeout(tick, charIdx === 1 ? 100 : 28);
+    } else { lineIdx++; charIdx = 0; setTimeout(tick, 160); }
   }
   tick();
 })();
@@ -737,8 +622,7 @@ const CODE_LINES = [
 // ═══════════════════════════════════════════════════════════
 function animateCounters() {
   document.querySelectorAll('[data-count]').forEach(el => {
-    const target = parseInt(el.dataset.count);
-    let current = 0;
+    const target = parseInt(el.dataset.count); let current = 0;
     const step = () => { current = Math.min(current + 1, target); el.textContent = current; if (current < target) setTimeout(step, 120); };
     setTimeout(step, 800);
   });
@@ -747,12 +631,7 @@ function animateCounters() {
 // ═══════════════════════════════════════════════════════════
 //  TICKER
 // ═══════════════════════════════════════════════════════════
-const TICKERS = [
-  '9 aktive Projekte in Deutschland & weltweit',
-  'Deutsch verwurzelt, international vernetzt',
-  'Kreativ · Medien · Technologie · Bildung',
-  'magicplum.de — Deine deutsche Heimat'
-];
+const TICKERS = ['9 aktive Projekte in Deutschland & weltweit','Deutsch verwurzelt, international vernetzt','Kreativ · Medien · Technologie · Bildung','magicplum.de — Deine deutsche Heimat'];
 let tickerIdx = 0;
 const tickerEl = document.getElementById('tickerText');
 tickerEl.style.transition = 'opacity 0.25s';
